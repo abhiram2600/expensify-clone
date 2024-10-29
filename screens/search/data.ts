@@ -1,17 +1,18 @@
 import GenericIcon from "@/assets/images/icons/generic-icon.svg";
 
-enum STATUS {
-  DRAFTS,
-  OUTSTANDING,
-  APPROVED,
-  PAID,
+export enum status {
+  ALL = "All",
+  DRAFTS = "Drafts",
+  OUTSTANDING = "Outstanding",
+  APPROVED = "Approved",
+  PAID = "Paid",
 }
 
 export const ledgerItems = [
   {
     id: 1,
     amount: 12,
-    status: STATUS.APPROVED,
+    status: status.APPROVED,
     receipt: "",
     merchant: "",
     description: "",
@@ -22,44 +23,68 @@ export const ledgerItems = [
   {
     id: 2,
     amount: 43,
-    status: STATUS.DRAFTS,
+    status: status.DRAFTS,
+    receipt: "",
+    merchant: "",
+    description: "",
+    date: "",
+    category: "",
+    paid: "",
   },
   {
     id: 3,
     amount: 100,
-    status: STATUS.PAID,
+    status: status.PAID,
+    receipt: "",
+    merchant: "",
+    description: "",
+    date: "",
+    category: "",
+    paid: "",
   },
   {
     id: 4,
     amount: 12,
-    status: STATUS.APPROVED,
+    status: status.APPROVED,
+    receipt: "",
+    merchant: "",
+    description: "",
+    date: "",
+    category: "",
+    paid: "",
   },
   {
     id: 5,
     amount: 1,
-    status: STATUS.OUTSTANDING,
+    status: status.OUTSTANDING,
+    receipt: "",
+    merchant: "",
+    description: "",
+    date: "",
+    category: "",
+    paid: "",
   },
 ];
 
 export const filters = [
   {
     icon: GenericIcon,
-    name: "All",
+    type: status.ALL,
   },
   {
     icon: GenericIcon,
-    name: "Drafts",
+    type: status.DRAFTS,
   },
   {
     icon: GenericIcon,
-    name: "Outstanding",
+    type: status.OUTSTANDING,
   },
   {
     icon: GenericIcon,
-    name: "Approved",
+    type: status.APPROVED,
   },
   {
     icon: GenericIcon,
-    name: "Paid",
+    type: status.PAID,
   },
 ];

@@ -1,5 +1,11 @@
 import React from "react";
-import { View, ViewProps, ScrollViewProps, StyleSheet } from "react-native";
+import {
+  View,
+  ViewProps,
+  ScrollViewProps,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 import {
   SafeAreaView,
   SafeAreaViewProps,
@@ -18,17 +24,19 @@ export const CustomView: React.FC<CustomViewProps> & {
 } = ({ children, isScrollView = false, scrollViewProps, style, ...props }) => {
   const colorMode = "DARK";
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        { backgroundColor: colors[colorMode].BACKGROUND },
-        style,
-      ]}
-      {...props}
-    >
-      {children}
-      <StatusBar style={colors[colorMode].STATUSBAR} />
-    </SafeAreaView>
+    <>
+      <View
+        style={[
+          styles.background,
+          {
+            backgroundColor: colors[colorMode].BACKGROUND,
+          },
+        ]}
+      />
+      <SafeAreaView style={[styles.container, style]} {...props}>
+        {children}
+      </SafeAreaView>
+    </>
   );
 };
 
@@ -43,5 +51,10 @@ CustomView.Row = ({ children, style, ...props }: ViewProps) => {
 const styles = StyleSheet.create({
   container: {
     padding: scaleSize(15),
+  },
+  background: {
+    position: "absolute",
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width,
   },
 });

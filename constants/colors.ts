@@ -4,7 +4,7 @@ export const colorMode = "DARK";
 
 export const colors = {
   DARK: {
-    BACKGROUND: "#072419",
+    BACKGROUND: "#061B09",
     BOLD_TEXT: "#FFFFFF",
     REGULAR_TEXT: "#808080",
     STATUSBAR: "light" as StatusBarStyle,

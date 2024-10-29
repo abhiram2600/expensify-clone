@@ -1,17 +1,29 @@
-import { Text } from "@/components/Text";
-import React from "react";
 import { View, StyleSheet, Pressable } from "react-native";
 import GenericDIcon from "@/assets/images/icons/generic-document.svg";
 import { CustomView } from "@/components/CustomView";
+import { ledgerItems } from "../../data";
 import { colors } from "@/constants/colors";
-import { ledgerItems } from "../data";
 import GenericProfile from "@/assets/images/icons/generic-profile.svg";
+import { Text } from "@/components/Text";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackList } from "@/navigation/RootFlowNavigator";
 
-interface LedgerItemsProps {}
+export const LedgerItem = ({
+  item,
+}: {
+  item: (typeof ledgerItems)[number];
+}) => {
+  const navigation: NavigationProp<RootStackList> = useNavigation();
 
-const LedgerItem = () => {
+  const handleOnPress = () => {
+    navigation.navigate("ItemDetail", { id: item.id.toString() });
+  };
+
   return (
-    <Pressable style={styles.ledgerItem}>
+    <Pressable
+      style={({ pressed }) => [pressed && { opacity: 0.8 }, styles.ledgerItem]}
+      onPress={handleOnPress}
+    >
       <CustomView.Row style={styles.participantsContainer}>
         <GenericProfile height={17} width={17} />
         <Text>abhi</Text>
@@ -25,18 +37,12 @@ const LedgerItem = () => {
           {true && <Text>category</Text>}
         </View>
         <View style={styles.priceContainer}>
-          <Text>4100</Text>
+          <Text>{item.amount}</Text>
           <Text>oct 28</Text>
         </View>
       </CustomView.Row>
     </Pressable>
   );
-};
-
-export const LedgerItems: React.FC<LedgerItemsProps> = () => {
-  return ledgerItems.map((item) => {
-    return <LedgerItem key={item.id} />;
-  });
 };
 
 const styles = StyleSheet.create({

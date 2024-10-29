@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { MainFlowNavigator } from "./MainFlowNavigator";
+import { RootStackNavigator } from "./RootFlowNavigator";
 import { AuthFlowNavigator } from "./AuthFlowNavigator";
 
 interface NavigatorProps {
@@ -10,7 +10,7 @@ interface NavigatorProps {
 export const Navigator: React.FC<NavigatorProps> = ({ isSignedIn }) => {
   return (
     <NavigationContainer>
-      {isSignedIn ? <MainFlowNavigator /> : <AuthFlowNavigator />}
+      {isSignedIn ? <RootStackNavigator /> : <AuthFlowNavigator />}
     </NavigationContainer>
   );
 };

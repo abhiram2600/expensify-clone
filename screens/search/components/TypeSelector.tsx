@@ -9,13 +9,20 @@ import {
   StyleProp,
   TextStyle,
 } from "react-native";
-import { filters } from "../data";
+import { filters, status } from "../data";
 
-interface TypeSelectorProps {}
+interface TypeSelectorProps {
+  setCurrentStatus: (newStatus: status) => void;
+}
 
-export const TypeSelector: React.FC<TypeSelectorProps> = () => {
+export const TypeSelector: React.FC<TypeSelectorProps> = ({
+  setCurrentStatus,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const changeCurrentStatus = (idx: number, status: status) => {
+    setCurrentIndex(idx);
+    setCurrentStatus(status);
+  };
   return (
     <ScrollView
       contentContainerStyle={styles.scrollView}
@@ -31,13 +38,13 @@ export const TypeSelector: React.FC<TypeSelectorProps> = () => {
         }
         return (
           <Pressable
-            onPress={() => setCurrentIndex(idx)}
+            onPress={() => changeCurrentStatus(idx, item.type)}
             style={containerStyle}
-            key={item.name}
+            key={`${item.type}`}
           >
             <item.icon height={20} width={20} />
             <Text variant="regular" style={textStyle}>
-              {item.name}
+              {item.type}
             </Text>
           </Pressable>
         );
