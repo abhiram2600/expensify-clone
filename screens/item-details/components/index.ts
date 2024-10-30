@@ -1,2 +1,2 @@
 export * from "./CustomHeader";
-export * from "./Details";
+export * from "./details-component";

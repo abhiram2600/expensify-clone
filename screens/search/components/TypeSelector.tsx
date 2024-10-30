@@ -9,7 +9,7 @@ import {
   StyleProp,
   TextStyle,
 } from "react-native";
-import { filters, status } from "../data";
+import { filters, status } from "../../../constants/data";
 
 interface TypeSelectorProps {
   setCurrentStatus: (newStatus: status) => void;

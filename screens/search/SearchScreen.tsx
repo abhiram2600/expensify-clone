@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PickerFilter } from "./components/PickerFilter";
 import { TypeSelector } from "./components/TypeSelector";
 import { LedgerItems } from "./components/ledger-items";
-import { status } from "./data";
+import { status } from "../../constants/data";
 
 interface SearchScreenProps {}
 

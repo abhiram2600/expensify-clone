@@ -8,7 +8,19 @@ export enum status {
   PAID = "Paid",
 }
 
-export const ledgerItems = [
+type ledgerItem = {
+  id: number;
+  amount: number;
+  status: status;
+  receipt: string;
+  merchant: string;
+  description: string;
+  date: Date;
+  category: "";
+  paid: boolean;
+};
+
+export const ledgerItems: ledgerItem[] = [
   {
     id: 1,
     amount: 12,
@@ -16,42 +28,42 @@ export const ledgerItems = [
     receipt: "",
     merchant: "",
     description: "",
-    date: "",
+    date: new Date("2024-10-23"),
     category: "",
-    paid: "",
+    paid: false,
   },
   {
     id: 2,
     amount: 43,
     status: status.DRAFTS,
     receipt: "",
-    merchant: "",
+    merchant: "xyz",
     description: "",
-    date: "",
+    date: new Date("2024-10-24"),
     category: "",
-    paid: "",
+    paid: true,
   },
   {
     id: 3,
     amount: 100,
     status: status.PAID,
     receipt: "",
-    merchant: "",
+    merchant: "xyz",
     description: "",
-    date: "",
+    date: new Date("2024-10-25"),
     category: "",
-    paid: "",
+    paid: false,
   },
   {
     id: 4,
     amount: 12,
     status: status.APPROVED,
     receipt: "",
-    merchant: "",
+    merchant: "xyz",
     description: "",
-    date: "",
+    date: new Date("2024-10-26"),
     category: "",
-    paid: "",
+    paid: true,
   },
   {
     id: 5,
@@ -60,9 +72,9 @@ export const ledgerItems = [
     receipt: "",
     merchant: "",
     description: "",
-    date: "",
+    date: new Date("2024-10-27"),
     category: "",
-    paid: "",
+    paid: false,
   },
 ];
 

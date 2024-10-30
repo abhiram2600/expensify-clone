@@ -1,7 +1,7 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import GenericDIcon from "@/assets/images/icons/generic-document.svg";
 import { CustomView } from "@/components/CustomView";
-import { ledgerItems } from "../../data";
+import { ledgerItems } from "../../../../constants/data";
 import { colors } from "@/constants/colors";
 import GenericProfile from "@/assets/images/icons/generic-profile.svg";
 import { Text } from "@/components/Text";
@@ -16,7 +16,7 @@ export const LedgerItem = ({
   const navigation: NavigationProp<RootStackList> = useNavigation();
 
   const handleOnPress = () => {
-    navigation.navigate("ItemDetail", { id: item.id.toString() });
+    navigation.navigate("ItemDetail", { id: item.id });
   };
 
   return (

@@ -1,15 +1,18 @@
 import { CustomView, Text } from "@/components";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
 import React from "react";
-import { View } from "react-native";
 import { CustomHeader, Details } from "./components";
-interface ItemDetailsScreenProps {}
+import { RouteProp, useRoute } from "@react-navigation/native";
 
-export const ItemDetailsScreen: React.FC<ItemDetailsScreenProps> = ({}) => {
+type ItemDetailRouteProp = RouteProp<RootStackList, "ItemDetail">;
+
+export const ItemDetailsScreen = () => {
+  const route = useRoute<ItemDetailRouteProp>();
+  const { id } = route.params;
   return (
     <CustomView>
       <CustomHeader />
-      <Details />
+      <Details id={id} />
     </CustomView>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
-import { ledgerItems, status } from "../../data";
+import { ledgerItems, status } from "../../../../constants/data";
 import { LedgerItem } from "./LedgerItem";
 
 interface LedgerItemsProps {

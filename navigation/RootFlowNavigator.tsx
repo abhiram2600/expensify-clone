@@ -1,11 +1,14 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { InboxScreen } from "@/screens/inbox/InboxScreen";
-import { SettingsScreen } from "@/screens/settings";
 import { TempScreen } from "@/screens/TempScreen";
 import { SearchNavigator } from "./SearchNavigator";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ItemDetailsScreen } from "@/screens";
+import {
+  ItemDetailsScreen,
+  DetailEntryScreen,
+  SettingsScreen,
+  InboxScreen,
+} from "@/screens";
 
 export type MainTabParamList = {
   Inbox: undefined;
@@ -29,7 +32,8 @@ const MainTabNavigator = () => {
 
 export type RootStackList = {
   MainTabs: undefined;
-  ItemDetail: { id: string };
+  ItemDetail: { id: number };
+  DetailEntry: { title: string; value: string | number | Date };
 };
 
 const RootStack = createNativeStackNavigator<RootStackList>();
@@ -39,6 +43,7 @@ export const RootStackNavigator = () => {
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="MainTabs" component={MainTabNavigator} />
       <RootStack.Screen name="ItemDetail" component={ItemDetailsScreen} />
+      <RootStack.Screen name="DetailEntry" component={DetailEntryScreen} />
     </RootStack.Navigator>
   );
 };
