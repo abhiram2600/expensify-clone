@@ -1,18 +1,14 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import GenericDIcon from "@/assets/images/icons/generic-document.svg";
 import { CustomView } from "@/components/CustomView";
-import { ledgerItems } from "../../../../constants/data";
 import { colors } from "@/constants/colors";
 import GenericProfile from "@/assets/images/icons/generic-profile.svg";
 import { Text } from "@/components/Text";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
+import { ledgerItemType } from "@/constants/data";
 
-export const LedgerItem = ({
-  item,
-}: {
-  item: (typeof ledgerItems)[number];
-}) => {
+export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
   const navigation: NavigationProp<RootStackList> = useNavigation();
 
   const handleOnPress = () => {
@@ -21,7 +17,10 @@ export const LedgerItem = ({
 
   return (
     <Pressable
-      style={({ pressed }) => [pressed && { opacity: 0.8 }, styles.ledgerItem]}
+      style={({ pressed }) => [
+        pressed && { opacity: 0.8 },
+        styles.ledgerItemType,
+      ]}
       onPress={handleOnPress}
     >
       <CustomView.Row style={styles.participantsContainer}>
@@ -46,7 +45,7 @@ export const LedgerItem = ({
 };
 
 const styles = StyleSheet.create({
-  ledgerItem: {
+  ledgerItemType: {
     width: "100%",
     backgroundColor: colors.LIGHT_GREEN,
     padding: 10,

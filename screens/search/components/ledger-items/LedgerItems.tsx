@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
-import { ledgerItems, status } from "../../../../constants/data";
+import { status } from "../../../../constants/data";
 import { LedgerItem } from "./LedgerItem";
+import { useAppStore } from "@/store/AppStore";
 
 interface LedgerItemsProps {
   currentStatus: status;
 }
 
 export const LedgerItems: React.FC<LedgerItemsProps> = ({ currentStatus }) => {
-  const [currentLedgerItems, setCurrentLedgerItems] = useState(ledgerItems);
+  const data = useAppStore((state) => state.data);
+
+  const [currentLedgerItems, setCurrentLedgerItems] = useState(data);
 
   useEffect(() => {
     if (currentStatus === status.ALL) {
-      setCurrentLedgerItems(ledgerItems);
+      setCurrentLedgerItems(data);
     } else {
-      const newData = ledgerItems.filter(
-        ({ status }) => status === currentStatus
-      );
+      const newData = data.filter(({ status }) => status === currentStatus);
       setCurrentLedgerItems(newData);
     }
   }, [currentStatus]);

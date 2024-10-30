@@ -13,6 +13,7 @@ import {
 import { StatusBar } from "expo-status-bar";
 import { colors } from "@/constants/colors";
 import { scaleSize } from "@/utils";
+import { useAppStore } from "@/store/AppStore";
 
 interface CustomViewProps extends SafeAreaViewProps {
   isScrollView?: boolean;
@@ -22,14 +23,14 @@ interface CustomViewProps extends SafeAreaViewProps {
 export const CustomView: React.FC<CustomViewProps> & {
   Row: React.FC<ViewProps>;
 } = ({ children, isScrollView = false, scrollViewProps, style, ...props }) => {
-  const colorMode = "DARK";
+  const theme = useAppStore((state) => state.theme);
   return (
     <>
       <View
         style={[
           styles.background,
           {
-            backgroundColor: colors[colorMode].BACKGROUND,
+            backgroundColor: colors[theme].BACKGROUND,
           },
         ]}
       />

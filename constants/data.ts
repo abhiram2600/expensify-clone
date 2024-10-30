@@ -8,7 +8,7 @@ export enum status {
   PAID = "Paid",
 }
 
-type ledgerItem = {
+export type ledgerItemType = {
   id: number;
   amount: number;
   status: status;
@@ -20,7 +20,7 @@ type ledgerItem = {
   paid: boolean;
 };
 
-export const ledgerItems: ledgerItem[] = [
+export const doNotUseItDirectlyData: ledgerItemType[] = [
   {
     id: 1,
     amount: 12,

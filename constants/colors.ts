@@ -1,7 +1,5 @@
 import { StatusBarStyle } from "expo-status-bar";
 
-export const colorMode = "DARK";
-
 export const colors = {
   DARK: {
     BACKGROUND: "#061B09",

@@ -2,15 +2,17 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { ReceiptImage } from "./ReceiptImage";
 import { IndividualDetail } from "./IndividualDetail";
-import { ledgerItems } from "@/constants/data";
+import { useAppStore } from "@/store/AppStore";
 
 interface DetailsProps {
   id: number;
 }
 
 export const Details: React.FC<DetailsProps> = ({ id }) => {
-  const detailData = ledgerItems.find((item) => item.id === id);
-  console.log(detailData);
+  const detailData = useAppStore((state) => state.data).find(
+    (item) => item.id === id
+  );
+
   return (
     <>
       <ReceiptImage />
