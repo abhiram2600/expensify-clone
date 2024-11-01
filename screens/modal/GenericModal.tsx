@@ -1,6 +1,5 @@
 import React from "react";
-import { View } from "react-native";
-import { Text } from "@/components";
+import { View, Text } from "@/components";
 
 interface GenericModalProps {}
 

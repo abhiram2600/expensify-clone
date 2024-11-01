@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomView, Text } from "@/components";
+import { View, Text } from "@/components";
 import { Pressable, StyleSheet } from "react-native";
 
 interface HeaderProps {
@@ -8,12 +8,12 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
-    <CustomView.Row style={styles.container}>
+    <View.Row style={styles.container}>
       <Pressable>
         <Text>{`<`}</Text>
       </Pressable>
       <Text>{title}</Text>
-    </CustomView.Row>
+    </View.Row>
   );
 };
 

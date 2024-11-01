@@ -1,4 +1,4 @@
-import { CustomView } from "@/components/CustomView";
+import { View } from "@/components";
 import React from "react";
 import { ScrollView } from "react-native";
 import { InfoHeader } from "./components/InfoHeader";
@@ -9,7 +9,7 @@ interface SettingsScreenProps {}
 
 export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
   return (
-    <CustomView>
+    <View.SafeAreaView>
       <InfoHeader />
       <ScrollView showsVerticalScrollIndicator={false}>
         <SettingsSection title="Account" />
@@ -18,6 +18,6 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = () => {
         <HorizontalRule />
         <SettingsSection title="General" />
       </ScrollView>
-    </CustomView>
+    </View.SafeAreaView>
   );
 };

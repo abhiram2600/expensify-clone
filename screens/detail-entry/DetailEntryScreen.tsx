@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { Header } from "./components";
 import { GenericInput } from "./components/GenericInputComponent";
 import { Button } from "react-native";
-import { CustomView } from "@/components";
+import { View } from "@/components";
 import { useAppStore } from "@/store/AppStore";
 
 type DetailEntryRouteProp = RouteProp<RootStackList, "DetailEntry">;
@@ -24,7 +24,7 @@ export const DetailEntryScreen = () => {
   const [currentValue, setCurrentValue] = useState(value);
   const updateData = useAppStore((state) => state.updateDataUsingId);
   return (
-    <CustomView>
+    <View.SafeAreaView>
       <Header title={title} />
       <GenericInput
         value={currentValue as string}
@@ -37,6 +37,6 @@ export const DetailEntryScreen = () => {
           navigation.goBack();
         }}
       />
-    </CustomView>
+    </View.SafeAreaView>
   );
 };

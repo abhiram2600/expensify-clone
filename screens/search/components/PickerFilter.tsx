@@ -1,7 +1,7 @@
-import { Text } from "@/components/Text";
+import { View, Text } from "@/components";
 import { colors } from "@/constants/colors";
 import React from "react";
-import { View, StyleSheet, Pressable, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 interface PickerFilterProps {}
 

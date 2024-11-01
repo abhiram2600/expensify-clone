@@ -1,9 +1,9 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import GenericDIcon from "@/assets/images/icons/generic-document.svg";
-import { CustomView } from "@/components/CustomView";
+import { View } from "@/components";
 import { colors } from "@/constants/colors";
 import GenericProfile from "@/assets/images/icons/generic-profile.svg";
-import { Text } from "@/components/Text";
+import { Text } from "@/components/CustomText";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
 import { ledgerItemType } from "@/constants/data";
@@ -23,13 +23,13 @@ export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
       ]}
       onPress={handleOnPress}
     >
-      <CustomView.Row style={styles.participantsContainer}>
+      <View.Row style={styles.participantsContainer}>
         <GenericProfile height={17} width={17} />
         <Text>abhi</Text>
         <Text>{` -> `}</Text>
         <Text>abhi</Text>
-      </CustomView.Row>
-      <CustomView.Row style={styles.detailsContainer}>
+      </View.Row>
+      <View.Row style={styles.detailsContainer}>
         <GenericDIcon height={40} width={40} />
         <View style={styles.nameAndCategory}>
           <Text>name</Text>
@@ -39,7 +39,7 @@ export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
           <Text>{item.amount}</Text>
           <Text>oct 28</Text>
         </View>
-      </CustomView.Row>
+      </View.Row>
     </Pressable>
   );
 };

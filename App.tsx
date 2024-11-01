@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { Navigator } from "./navigation/Navigator";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 interface AppProps {}
 

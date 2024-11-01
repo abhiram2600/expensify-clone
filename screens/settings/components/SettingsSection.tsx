@@ -1,4 +1,4 @@
-import { Text } from "@/components/Text";
+import { Text } from "@/components/CustomText";
 import React from "react";
 import { StyleSheet, View, Pressable } from "react-native";
 import { settingsData, settingsDataType } from "../settings-data";

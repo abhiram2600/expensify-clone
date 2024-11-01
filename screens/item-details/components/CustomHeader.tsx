@@ -1,7 +1,7 @@
 import React from "react";
-import { CustomView, Text } from "@/components";
+import { View, Text } from "@/components";
 import GenericProfile from "@/assets/images/icons/generic-profile.svg";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { ArrowGrey } from "@/assets/images/icons";
 
 interface CustomHeaderProps {}
@@ -9,7 +9,7 @@ interface CustomHeaderProps {}
 export const CustomHeader: React.FC<CustomHeaderProps> = () => {
   const onPress = () => {};
   return (
-    <CustomView.Row style={styles.container}>
+    <View.Row style={styles.container}>
       <TouchableOpacity style={styles.icon}>
         <ArrowGrey height={30} width={30} />
       </TouchableOpacity>
@@ -18,7 +18,7 @@ export const CustomHeader: React.FC<CustomHeaderProps> = () => {
         <Text>tracking for xyz for xyz</Text>
         <Text>From axyz</Text>
       </View>
-    </CustomView.Row>
+    </View.Row>
   );
 };
 

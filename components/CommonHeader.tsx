@@ -1,7 +1,7 @@
 import { scaleSize } from "@/utils";
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Text } from "./Text";
+import { StyleSheet } from "react-native";
+import { View, Text } from "@/components";
 
 interface CommonHeaderProps {
   screenName: string;

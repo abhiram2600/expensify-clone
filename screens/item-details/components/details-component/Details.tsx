@@ -1,11 +1,12 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { ReceiptImage } from "./ReceiptImage";
 import { IndividualDetail } from "./IndividualDetail";
 import { useAppStore } from "@/store/AppStore";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
 import { valueType } from "@/constants/data";
+import { View } from "@/components";
 
 interface DetailsProps {
   id: number;

@@ -1,8 +1,7 @@
 import React from "react";
 import {
-  View,
-  ViewProps,
-  ScrollViewProps,
+  View as RNView,
+  ViewProps as RNViewProps,
   StyleSheet,
   Dimensions,
 } from "react-native";
@@ -13,18 +12,30 @@ import {
 import { colors } from "@/constants/colors";
 import { useAppStore } from "@/store/AppStore";
 
-interface CustomViewProps extends SafeAreaViewProps {
-  isScrollView?: boolean;
-  scrollViewProps?: ScrollViewProps;
+interface ViewProps extends RNViewProps {}
+
+interface ViewTypes {
+  Row: React.FC<RNViewProps>;
+  SafeAreaView: React.FC<SafeAreaViewProps>;
 }
 
-export const CustomView: React.FC<CustomViewProps> & {
-  Row: React.FC<ViewProps>;
-} = ({ children, isScrollView = false, scrollViewProps, style, ...props }) => {
+export const View: React.FC<ViewProps> & ViewTypes = ({ ...props }) => {
+  return <RNView {...props} />;
+};
+
+View.Row = ({ children, style, ...props }: RNViewProps) => {
+  return (
+    <RNView style={[{ flexDirection: "row" }, style]} {...props}>
+      {children}
+    </RNView>
+  );
+};
+
+View.SafeAreaView = ({ children, style, ...props }: SafeAreaViewProps) => {
   const theme = useAppStore((state) => state.theme);
   return (
     <>
-      <View
+      <RNView
         style={[
           styles.background,
           {
@@ -36,14 +47,6 @@ export const CustomView: React.FC<CustomViewProps> & {
         {children}
       </SafeAreaView>
     </>
-  );
-};
-
-CustomView.Row = ({ children, style, ...props }: ViewProps) => {
-  return (
-    <View style={[{ flexDirection: "row" }, style]} {...props}>
-      {children}
-    </View>
   );
 };
 

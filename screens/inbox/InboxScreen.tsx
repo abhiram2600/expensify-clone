@@ -1,13 +1,13 @@
 import { CommonHeader } from "@/components/CommonHeader";
-import { CustomView } from "@/components/CustomView";
+import { View } from "@/components";
 import React from "react";
 
 interface InboxScreenProps {}
 
 export const InboxScreen: React.FC<InboxScreenProps> = () => {
   return (
-    <CustomView>
+    <View>
       <CommonHeader screenName="Inbox" />
-    </CustomView>
+    </View>
   );
 };

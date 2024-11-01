@@ -1,5 +1,4 @@
 import GenericIcon from "@/assets/images/icons/generic-icon.svg";
-import { SettingsScreen } from "./SettingsScreen";
 import { Temp } from "./components/Temp";
 
 export const settingsData = {

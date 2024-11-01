@@ -4,7 +4,7 @@ import { TempScreen } from "@/screens/TempScreen";
 import { useAppStore } from "@/store/AppStore";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SearchNavigator } from "./SearchNavigator";
-import { View } from "react-native";
+import { View } from "@/components";
 
 export type MainTabParamList = {
   Inbox: undefined;

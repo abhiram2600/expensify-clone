@@ -1,6 +1,5 @@
 import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
-import { Text } from "@/components";
+import { TextInput, StyleSheet } from "react-native";
 
 type validTypes = string | number | Date;
 

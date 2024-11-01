@@ -1,5 +1,5 @@
 import { CommonHeader } from "@/components/CommonHeader";
-import { CustomView } from "@/components/CustomView";
+import { View } from "@/components";
 import React, { useState } from "react";
 import { PickerFilter } from "./components/PickerFilter";
 import { TypeSelector } from "./components/TypeSelector";
@@ -11,11 +11,11 @@ interface SearchScreenProps {}
 export const SearchScreen: React.FC<SearchScreenProps> = () => {
   const [currentStatus, setCurrentStatus] = useState<status>(status.ALL);
   return (
-    <CustomView>
+    <View.SafeAreaView>
       <CommonHeader screenName="Search" />
       <PickerFilter />
       <TypeSelector setCurrentStatus={setCurrentStatus} />
       <LedgerItems currentStatus={currentStatus} />
-    </CustomView>
+    </View.SafeAreaView>
   );
 };

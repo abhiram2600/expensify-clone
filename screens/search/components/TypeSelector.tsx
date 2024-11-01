@@ -1,4 +1,4 @@
-import { Text } from "@/components/Text";
+import { Text } from "@/components/CustomText";
 import { colors } from "@/constants/colors";
 import React, { useState } from "react";
 import {

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
-import { Text } from "@/components";
+import React from "react";
+import { Pressable, StyleSheet } from "react-native";
+import { View, Text } from "@/components";
 import { colors } from "@/constants/colors";
 import { valueType } from "@/constants/data";
 

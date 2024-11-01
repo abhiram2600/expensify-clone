@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Text } from "@/components/Text";
+import { StyleSheet } from "react-native";
+import { View, Text } from "@/components";
 
 interface InfoHeaderProps {}
 
