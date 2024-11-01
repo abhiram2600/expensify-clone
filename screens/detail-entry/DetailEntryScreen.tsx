@@ -1,21 +1,42 @@
 import { RootStackList } from "@/navigation/RootFlowNavigator";
-import { RouteProp, useRoute } from "@react-navigation/native";
+import {
+  NavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import React, { useState } from "react";
 import { Header } from "./components";
 import { GenericInput } from "./components/GenericInputComponent";
+import { Button } from "react-native";
+import { CustomView } from "@/components";
+import { useAppStore } from "@/store/AppStore";
 
 type DetailEntryRouteProp = RouteProp<RootStackList, "DetailEntry">;
 
 export const DetailEntryScreen = () => {
   const route = useRoute<DetailEntryRouteProp>();
 
-  const { title, value } = route.params;
+  const navigation: NavigationProp<RootStackList> = useNavigation();
+
+  const { title, value, id } = route.params;
 
   const [currentValue, setCurrentValue] = useState(value);
+  const updateData = useAppStore((state) => state.updateDataUsingId);
   return (
-    <>
+    <CustomView>
       <Header title={title} />
-      <GenericInput value={currentValue} onChangeText={setCurrentValue} />
-    </>
+      <GenericInput
+        value={currentValue as string}
+        onChangeText={setCurrentValue}
+      />
+      <Button
+        title="submit"
+        onPress={(e) => {
+          updateData(id, title, currentValue);
+          navigation.goBack();
+        }}
+      />
+    </CustomView>
   );
 };

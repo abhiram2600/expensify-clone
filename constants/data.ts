@@ -8,6 +8,8 @@ export enum status {
   PAID = "Paid",
 }
 
+export type valueType = string | number | Date | undefined;
+
 export type ledgerItemType = {
   id: number;
   amount: number;

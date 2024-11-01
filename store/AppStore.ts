@@ -1,5 +1,26 @@
-import { ledgerItemType, doNotUseItDirectlyData } from "@/constants/data";
+import {
+  ledgerItemType,
+  doNotUseItDirectlyData,
+  valueType,
+} from "@/constants/data";
 import { create } from "zustand";
+
+const updateExistingData = (
+  prevData: ledgerItemType[],
+  id: number,
+  title: string,
+  value: valueType
+) => {
+  const updatedData = prevData.map((item) => {
+    if (item.id === id) {
+      title = title.toLowerCase();
+      const newItem = { ...item, [title]: value };
+      return newItem;
+    }
+    return item;
+  });
+  return updatedData;
+};
 
 interface ThemeState {
   theme: "LIGHT" | "DARK";
@@ -8,7 +29,7 @@ interface ThemeState {
 
 interface DataState {
   data: ledgerItemType[];
-  setData: (newData: ledgerItemType[]) => void;
+  updateDataUsingId: (id: number, title: string, value: valueType) => void;
 }
 
 type AppState = ThemeState & DataState;
@@ -21,5 +42,9 @@ export const useAppStore = create<AppState>((set) => ({
     })),
 
   data: doNotUseItDirectlyData,
-  setData: (newData) => set({ data: newData }),
+  updateDataUsingId: (id, title, value) =>
+    set((state) => {
+      const updatedData = updateExistingData(state.data, id, title, value);
+      return { data: updatedData };
+    }),
 }));

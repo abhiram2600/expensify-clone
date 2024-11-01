@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import { CustomView, Text } from "@/components";
+import { Text } from "@/components";
 import { colors } from "@/constants/colors";
+import { valueType } from "@/constants/data";
 
 interface IndividualDetailProps {
   title: string;
-  value: string | number | Date | undefined;
+  value: valueType;
+  onPressItem: (title: string, value: valueType) => void;
 }
 
 export const IndividualDetail: React.FC<IndividualDetailProps> = ({
   title,
   value,
+  onPressItem,
 }) => {
   if (value instanceof Date) {
     value = value.toISOString().split("T")[0];
   } else {
     value = value?.toString();
   }
-  const [currentValue, setCurrentValue] = useState(value);
 
   return (
     <Pressable
-      onPress={() => {}}
+      onPress={() => onPressItem(title, value)}
       style={({ pressed }) => [
         styles.container,
         pressed && { backgroundColor: colors.LIGHT_GREEN },
@@ -30,7 +32,7 @@ export const IndividualDetail: React.FC<IndividualDetailProps> = ({
       {value ? (
         <View>
           <Text>{title}</Text>
-          <Text>{currentValue}</Text>
+          <Text>{value}</Text>
         </View>
       ) : (
         <Text>{title}</Text>

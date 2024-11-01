@@ -10,9 +10,7 @@ import {
   SafeAreaView,
   SafeAreaViewProps,
 } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
 import { colors } from "@/constants/colors";
-import { scaleSize } from "@/utils";
 import { useAppStore } from "@/store/AppStore";
 
 interface CustomViewProps extends SafeAreaViewProps {
@@ -51,7 +49,7 @@ CustomView.Row = ({ children, style, ...props }: ViewProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: scaleSize(15),
+    paddingVertical: 10,
   },
   background: {
     position: "absolute",
