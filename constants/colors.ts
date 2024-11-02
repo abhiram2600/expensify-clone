@@ -17,6 +17,8 @@ export const colors = {
   },
   WHITE: "#FFFFFF",
   GREY: "#808080",
-  LIGHT_GREEN: "#1A3D32",
+  LIGHT_GREEN: "#072419",
+  LIGHT_GREEN_2: "#0A2E25",
+  LIGHT_GREEN_3: "#1A3D32",
   GREEN: "green",
 };

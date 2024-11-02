@@ -1,12 +1,17 @@
-import { StyleSheet, Pressable } from "react-native";
-import GenericDIcon from "@/assets/images/icons/generic-document.svg";
+import {
+  StyleSheet,
+  Pressable,
+  Image,
+  ImageSourcePropType,
+} from "react-native";
 import { View } from "@/components";
 import { colors } from "@/constants/colors";
-import GenericProfile from "@/assets/images/icons/generic-profile.svg";
+import { ArrowRight, Receipt } from "@/assets/images/icons";
 import { Text } from "@/components/CustomText";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
 import { ledgerItemType } from "@/constants/data";
+import { getFormattedDate } from "@/constants/util";
 
 export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
   const navigation: NavigationProp<RootStackList> = useNavigation();
@@ -24,20 +29,33 @@ export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
       onPress={handleOnPress}
     >
       <View.Row style={styles.participantsContainer}>
-        <GenericProfile height={17} width={17} />
-        <Text>abhi</Text>
-        <Text>{` -> `}</Text>
-        <Text>abhi</Text>
+        <Image source={item.fromImage} style={styles.profileImage} />
+        <Text style={styles.fromToText}>{item.from}</Text>
+        <ArrowRight height={10} width={10} />
+        <Image source={item.toImage} style={styles.profileImage} />
+        <Text style={styles.fromToText}>{item.to}</Text>
       </View.Row>
       <View.Row style={styles.detailsContainer}>
-        <GenericDIcon height={40} width={40} />
+        {item.receipt ? (
+          <Image
+            source={item.receipt as ImageSourcePropType}
+            style={styles.receipt}
+          />
+        ) : (
+          <View style={styles.receipt}>
+            <Receipt height={20} width={20} />
+          </View>
+        )}
+
         <View style={styles.nameAndCategory}>
-          <Text>name</Text>
-          {true && <Text>category</Text>}
+          <Text style={styles.merchantText}>{item.merchant}</Text>
+          {item.category && (
+            <Text style={styles.categoryText}>{item.category}</Text>
+          )}
         </View>
         <View style={styles.priceContainer}>
-          <Text>{item.amount}</Text>
-          <Text>oct 28</Text>
+          <Text style={styles.amountText}>{`$${item.amount.toFixed(2)}`}</Text>
+          <Text style={styles.dateText}>{getFormattedDate(item.date)}</Text>
         </View>
       </View.Row>
     </Pressable>
@@ -48,9 +66,9 @@ const styles = StyleSheet.create({
   ledgerItemType: {
     width: "100%",
     backgroundColor: colors.LIGHT_GREEN,
-    padding: 10,
+    padding: 12,
     borderRadius: 7,
-    marginTop: 20,
+    // marginTop: 20,
   },
   participantsContainer: {
     gap: 5,
@@ -66,5 +84,41 @@ const styles = StyleSheet.create({
   },
   priceContainer: {
     marginLeft: "auto",
+    gap: 2,
+  },
+  profileImage: {
+    height: 15,
+    width: 15,
+    borderRadius: 7.5,
+  },
+  receipt: {
+    height: 40,
+    width: 35,
+    borderRadius: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.LIGHT_GREEN_3,
+  },
+
+  //----- Text styles -----//
+  fromToText: {
+    color: colors.WHITE,
+    fontSize: 11,
+  },
+  amountText: {
+    textAlign: "right",
+    color: "white",
+    fontSize: 15,
+  },
+  dateText: {
+    textAlign: "right",
+    fontSize: 11,
+  },
+  merchantText: {
+    fontSize: 15,
+    color: "white",
+  },
+  categoryText: {
+    fontSize: 11,
   },
 });

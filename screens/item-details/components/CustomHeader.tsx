@@ -1,8 +1,7 @@
 import React from "react";
 import { View, Text } from "@/components";
-import GenericProfile from "@/assets/images/icons/generic-profile.svg";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { ArrowGrey } from "@/assets/images/icons";
+import { ArrowGrey, Profile } from "@/assets/images/icons";
 
 interface CustomHeaderProps {}
 
@@ -13,7 +12,7 @@ export const CustomHeader: React.FC<CustomHeaderProps> = () => {
       <TouchableOpacity style={styles.icon}>
         <ArrowGrey height={30} width={30} />
       </TouchableOpacity>
-      <GenericProfile height={50} width={50} />
+      <Profile height={50} width={50} />
       <View style={styles.text}>
         <Text>tracking for xyz for xyz</Text>
         <Text>From axyz</Text>

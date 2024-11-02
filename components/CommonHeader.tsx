@@ -1,8 +1,8 @@
-import { scaleSize } from "@/utils";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { Text } from "./CustomText";
 import { View } from "./CustomView";
+import { SearchIcon } from "@/assets/images/icons";
 
 interface CommonHeaderProps {
   screenName: string;
@@ -10,8 +10,11 @@ interface CommonHeaderProps {
 
 export const CommonHeader: React.FC<CommonHeaderProps> = ({ screenName }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.logo} />
+    <View style={styles.container} addPaddingHorizontal>
+      <Image
+        style={styles.logo}
+        source={require("@/assets/images/expensify-logo.png")}
+      />
       <Text variant="bold" style={styles.textStyle}>
         Expensify
       </Text>
@@ -19,7 +22,7 @@ export const CommonHeader: React.FC<CommonHeaderProps> = ({ screenName }) => {
         variant="regular"
         style={styles.textStyle}
       >{` / ${screenName}`}</Text>
-      <View style={styles.search} />
+      <SearchIcon height={30} width={30} style={styles.search} />
     </View>
   );
 };
@@ -30,19 +33,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logo: {
-    backgroundColor: "green",
-    height: scaleSize(40),
-    width: scaleSize(40),
-    borderRadius: scaleSize(20),
-    marginRight: scaleSize(12),
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginRight: 12,
   },
   search: {
-    backgroundColor: "gray",
-    height: scaleSize(30),
-    width: scaleSize(30),
     marginLeft: "auto",
   },
   textStyle: {
-    fontSize: scaleSize(20),
+    fontSize: 20,
   },
 });

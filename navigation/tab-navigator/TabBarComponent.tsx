@@ -6,13 +6,13 @@ import { useAppStore } from "@/store/AppStore";
 import { colors } from "@/constants/colors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { PlusButton } from "./PlusButton";
+import { constants } from "@/constants/constants";
 
 export const TabBarComponent = ({
   state,
   descriptors,
   navigation,
 }: BottomTabBarProps) => {
-  const { bottom } = useSafeAreaInsets();
   const theme = useAppStore((state) => state.theme);
   return (
     <View.Row
@@ -20,7 +20,7 @@ export const TabBarComponent = ({
         styles.tabBar,
         {
           backgroundColor: colors[theme].BACKGROUND,
-          height: 60 + bottom, // 72 in the app
+          height: constants.bottomTabHeight, // 72 in the app
         },
       ]}
     >

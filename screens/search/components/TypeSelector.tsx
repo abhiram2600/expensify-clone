@@ -10,6 +10,7 @@ import {
   TextStyle,
 } from "react-native";
 import { filters, status } from "../../../constants/data";
+import { View } from "@/components";
 
 interface TypeSelectorProps {
   setCurrentStatus: (newStatus: status) => void;
@@ -24,41 +25,47 @@ export const TypeSelector: React.FC<TypeSelectorProps> = ({
     setCurrentStatus(status);
   };
   return (
-    <ScrollView
-      contentContainerStyle={styles.scrollView}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-    >
-      {filters.map((item, idx) => {
-        let containerStyle: StyleProp<ViewStyle> = [styles.itemContainer];
-        let textStyle: StyleProp<TextStyle> = [styles.text];
-        if (idx === currentIndex) {
-          containerStyle.push(styles.itemSelected);
-          textStyle.push(styles.itemSelectedText);
-        }
-        return (
-          <Pressable
-            onPress={() => changeCurrentStatus(idx, item.type)}
-            style={containerStyle}
-            key={`${item.type}`}
-          >
-            <item.icon height={20} width={20} />
-            <Text variant="regular" style={textStyle}>
-              {item.type}
-            </Text>
-          </Pressable>
-        );
-      })}
-    </ScrollView>
+    <View style={styles.scrollViewStyle}>
+      <ScrollView
+        contentContainerStyle={styles.scrollViewContentStyle}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
+        {filters.map((item, idx) => {
+          let containerStyle: StyleProp<ViewStyle> = [styles.itemContainer];
+          let textStyle: StyleProp<TextStyle> = [styles.text];
+          let Icon = item.icon;
+          if (idx === currentIndex) {
+            containerStyle.push(styles.itemSelected);
+            textStyle.push(styles.itemSelectedText);
+            Icon = item.iconSelected;
+          }
+          return (
+            <Pressable
+              onPress={() => changeCurrentStatus(idx, item.type)}
+              style={containerStyle}
+              key={`${item.type}`}
+            >
+              <Icon height={20} width={20} />
+              <Text style={textStyle}>{item.type}</Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
+  scrollViewStyle: {
+    paddingTop: 10,
+    paddingBottom: 7,
+  },
+  scrollViewContentStyle: {
+    paddingHorizontal: 10,
     gap: 0,
   },
   itemContainer: {
-    // paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 30,
     height: 40,
@@ -67,7 +74,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 5,
   },
-  text: {},
+  text: {
+    fontWeight: "bold",
+    fontSize: 12,
+  },
   itemSelected: {
     backgroundColor: colors.LIGHT_GREEN,
   },

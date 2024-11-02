@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import {
   SafeAreaView,
-  SafeAreaViewProps,
+  SafeAreaViewProps as RNSafeAreaViewProps,
 } from "react-native-safe-area-context";
 import { colors } from "@/constants/colors";
 import { useAppStore } from "@/store/AppStore";
@@ -16,8 +16,12 @@ interface ViewProps extends RNViewProps {
   addPaddingHorizontal?: boolean;
 }
 
+interface SafeAreaViewProps extends RNSafeAreaViewProps {
+  addPaddingHorizontal?: boolean;
+}
+
 interface ViewTypes {
-  Row: React.FC<RNViewProps>;
+  Row: React.FC<ViewProps>;
   SafeAreaView: React.FC<SafeAreaViewProps>;
 }
 
@@ -34,20 +38,33 @@ export const View: React.FC<ViewProps> & ViewTypes = ({
   );
 };
 
-View.Row = ({ children, style, ...props }: RNViewProps) => {
+View.Row = ({ addPaddingHorizontal = false, children, style, ...props }) => {
   return (
-    <RNView style={[{ flexDirection: "row" }, style]} {...props}>
+    <RNView
+      style={[
+        { flexDirection: "row" },
+        addPaddingHorizontal && styles.paddingHorizontal,
+        style,
+      ]}
+      {...props}
+    >
       {children}
     </RNView>
   );
 };
 
-View.SafeAreaView = ({ children, style, ...props }: SafeAreaViewProps) => {
+View.SafeAreaView = ({
+  addPaddingHorizontal = false,
+  children,
+  style,
+  ...props
+}) => {
   const theme = useAppStore((state) => state.theme);
   return (
     <>
       <RNView
         style={[
+          addPaddingHorizontal && styles.paddingHorizontal,
           styles.background,
           {
             backgroundColor: colors[theme].BACKGROUND,

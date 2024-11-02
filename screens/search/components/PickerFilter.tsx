@@ -3,7 +3,7 @@ import { colors } from "@/constants/colors";
 import { modalTypeState, useAppStore } from "@/store/AppStore";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { ArrowGrey, FilterIcon, GenericDocument } from "@/assets/images/icons";
+import { ArrowGrey, FilterIcon, Receipt } from "@/assets/images/icons";
 
 interface PickerFilterProps {}
 
@@ -15,9 +15,9 @@ export const PickerFilter: React.FC<PickerFilterProps> = () => {
   };
 
   return (
-    <View.Row style={styles.container}>
+    <View.Row style={styles.container} addPaddingHorizontal>
       <TouchableOpacity style={styles.typePicker} onPress={onPress}>
-        <GenericDocument height={20} width={20} style={styles.document} />
+        <Receipt height={17} width={20} style={styles.document} />
         <Text variant="bold" style={styles.buttonTitle}>{`Expenses`}</Text>
         <ArrowGrey height={25} width={25} style={styles.arrow} />
       </TouchableOpacity>
@@ -31,7 +31,6 @@ export const PickerFilter: React.FC<PickerFilterProps> = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
-    marginBottom: 15,
   },
   typePicker: {
     flex: 1,
