@@ -18,4 +18,5 @@ export const colors = {
   WHITE: "#FFFFFF",
   GREY: "#808080",
   LIGHT_GREEN: "#1A3D32",
+  GREEN: "green",
 };

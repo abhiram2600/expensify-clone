@@ -1,26 +1,35 @@
 import { View, Text } from "@/components";
 import { colors } from "@/constants/colors";
+import { modalTypeState, useAppStore } from "@/store/AppStore";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
+import { ArrowGrey, FilterIcon, GenericDocument } from "@/assets/images/icons";
 
 interface PickerFilterProps {}
 
 export const PickerFilter: React.FC<PickerFilterProps> = () => {
+  const changeModalState = useAppStore((state) => state.changeModalState);
+
+  const onPress = () => {
+    changeModalState({ isVisible: true, type: modalTypeState.SEARCH });
+  };
+
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.typePicker}>
-        <Text variant="bold">{`Expenses >`}</Text>
+    <View.Row style={styles.container}>
+      <TouchableOpacity style={styles.typePicker} onPress={onPress}>
+        <GenericDocument height={20} width={20} style={styles.document} />
+        <Text variant="bold" style={styles.buttonTitle}>{`Expenses`}</Text>
+        <ArrowGrey height={25} width={25} style={styles.arrow} />
       </TouchableOpacity>
       <TouchableOpacity style={styles.filterButton}>
-        <Text variant="bold">S</Text>
+        <FilterIcon height={20} width={20} />
       </TouchableOpacity>
-    </View>
+    </View.Row>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
     marginTop: 20,
     marginBottom: 15,
   },
@@ -31,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
   },
   filterButton: {
     marginLeft: 10,
@@ -40,5 +50,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
+  },
+  arrow: {
+    transform: [{ rotate: "90deg" }],
+    marginLeft: 3,
+  },
+  document: {
+    marginRight: 10,
+  },
+  buttonTitle: {
+    fontSize: 12,
   },
 });

@@ -32,7 +32,23 @@ interface DataState {
   updateDataUsingId: (id: number, title: string, value: valueType) => void;
 }
 
-type AppState = ThemeState & DataState;
+export enum modalTypeState {
+  PLUSBUTTON,
+  SEARCH,
+  NONE,
+}
+
+interface ModalType {
+  isVisible: boolean;
+  type: modalTypeState;
+}
+
+interface ModalState {
+  modalState: ModalType;
+  changeModalState: ({}: ModalType) => void;
+}
+
+type AppState = ThemeState & DataState & ModalState;
 
 export const useAppStore = create<AppState>((set) => ({
   theme: "DARK",
@@ -47,4 +63,11 @@ export const useAppStore = create<AppState>((set) => ({
       const updatedData = updateExistingData(state.data, id, title, value);
       return { data: updatedData };
     }),
+
+  modalState: {
+    isVisible: false,
+    type: modalTypeState.NONE,
+  },
+  changeModalState: (newModalState) =>
+    set(() => ({ modalState: newModalState })),
 }));

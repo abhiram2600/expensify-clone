@@ -6,8 +6,8 @@ interface InboxScreenProps {}
 
 export const InboxScreen: React.FC<InboxScreenProps> = () => {
   return (
-    <View>
+    <View.SafeAreaView>
       <CommonHeader screenName="Inbox" />
-    </View>
+    </View.SafeAreaView>
   );
 };

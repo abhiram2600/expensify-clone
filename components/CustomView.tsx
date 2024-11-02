@@ -12,15 +12,26 @@ import {
 import { colors } from "@/constants/colors";
 import { useAppStore } from "@/store/AppStore";
 
-interface ViewProps extends RNViewProps {}
+interface ViewProps extends RNViewProps {
+  addPaddingHorizontal?: boolean;
+}
 
 interface ViewTypes {
   Row: React.FC<RNViewProps>;
   SafeAreaView: React.FC<SafeAreaViewProps>;
 }
 
-export const View: React.FC<ViewProps> & ViewTypes = ({ ...props }) => {
-  return <RNView {...props} />;
+export const View: React.FC<ViewProps> & ViewTypes = ({
+  addPaddingHorizontal = false,
+  style,
+  ...props
+}) => {
+  return (
+    <RNView
+      style={[addPaddingHorizontal && styles.paddingHorizontal, style]}
+      {...props}
+    />
+  );
 };
 
 View.Row = ({ children, style, ...props }: RNViewProps) => {
@@ -58,5 +69,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
+  },
+  paddingHorizontal: {
+    paddingHorizontal: 10,
   },
 });
