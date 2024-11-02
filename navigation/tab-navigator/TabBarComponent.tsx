@@ -110,12 +110,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   profileImage: {
-    height: 25,
-    width: 25,
-    borderRadius: 12.5,
+    height: 23,
+    width: 23,
+    borderRadius: 11.5,
   },
   profileImageFocused: {
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: colors.GREEN,
   },
 });

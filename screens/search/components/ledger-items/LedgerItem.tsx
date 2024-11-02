@@ -43,7 +43,7 @@ export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
           />
         ) : (
           <View style={styles.receipt}>
-            <Receipt height={20} width={20} />
+            <Receipt height={20} width={20} fill={colors.GREY} />
           </View>
         )}
 

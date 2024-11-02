@@ -25,7 +25,7 @@ export const PlusButton: React.FC<PlusButtonProps> = () => {
   }
 
   const onPress = () => {
-    changeModalState({ isVisible: true, type: modalTypeState.SEARCH });
+    changeModalState({ isVisible: true, type: modalTypeState.PLUSBUTTON });
   };
 
   const animatedStyles = useAnimatedStyle(() => ({

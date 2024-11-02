@@ -34,7 +34,7 @@ interface DataState {
 
 export enum modalTypeState {
   PLUSBUTTON,
-  SEARCH,
+  PICKERFILTER,
   NONE,
 }
 

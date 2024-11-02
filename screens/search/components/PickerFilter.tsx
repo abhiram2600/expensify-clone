@@ -11,13 +11,18 @@ export const PickerFilter: React.FC<PickerFilterProps> = () => {
   const changeModalState = useAppStore((state) => state.changeModalState);
 
   const onPress = () => {
-    changeModalState({ isVisible: true, type: modalTypeState.SEARCH });
+    changeModalState({ isVisible: true, type: modalTypeState.PICKERFILTER });
   };
 
   return (
     <View.Row style={styles.container} addPaddingHorizontal>
       <TouchableOpacity style={styles.typePicker} onPress={onPress}>
-        <Receipt height={17} width={20} style={styles.document} />
+        <Receipt
+          height={17}
+          width={20}
+          style={styles.document}
+          fill={colors.GREY}
+        />
         <Text variant="bold" style={styles.buttonTitle}>{`Expenses`}</Text>
         <ArrowGrey height={25} width={25} style={styles.arrow} />
       </TouchableOpacity>

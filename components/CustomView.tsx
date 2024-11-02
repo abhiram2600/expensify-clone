@@ -64,14 +64,20 @@ View.SafeAreaView = ({
     <>
       <RNView
         style={[
-          addPaddingHorizontal && styles.paddingHorizontal,
           styles.background,
           {
             backgroundColor: colors[theme].BACKGROUND,
           },
         ]}
       />
-      <SafeAreaView style={[styles.container, style]} {...props}>
+      <SafeAreaView
+        style={[
+          addPaddingHorizontal && styles.paddingHorizontal,
+          styles.container,
+          style,
+        ]}
+        {...props}
+      >
         {children}
       </SafeAreaView>
     </>
@@ -88,6 +94,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
   },
   paddingHorizontal: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
   },
 });

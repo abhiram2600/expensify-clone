@@ -20,7 +20,7 @@ export const MainTabNavigator = () => {
         headerShown: false,
       }}
       tabBar={(props) => <TabBarComponent {...props} />}
-      initialRouteName={"SearchNav"}
+      initialRouteName={"Settings"}
     >
       <Tab.Screen
         name="Inbox"
