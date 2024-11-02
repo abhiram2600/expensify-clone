@@ -8,17 +8,23 @@ import Animated, {
   withSpring,
 } from "react-native-reanimated";
 import { modalTypeState, useAppStore } from "@/store/AppStore";
+import { PlusIcon } from "@/assets/images/icons";
 
 interface PlusButtonProps {}
 
 export const PlusButton: React.FC<PlusButtonProps> = () => {
   const changeModalState = useAppStore((state) => state.changeModalState);
-  const data = useAppStore((state) => state.data);
+  const { isVisible } = useAppStore((state) => state.modalState);
 
   const deg = useSharedValue(0);
+
+  if (isVisible) {
+    deg.value = withSpring(deg.value + 45);
+  } else if (deg.value >= 45) {
+    deg.value = withSpring(deg.value - 45);
+  }
+
   const onPress = () => {
-    if (deg.value < 45) deg.value = withSpring(deg.value + 45);
-    else deg.value = withSpring(deg.value - 45);
     changeModalState({ isVisible: true, type: modalTypeState.SEARCH });
   };
 
@@ -28,7 +34,7 @@ export const PlusButton: React.FC<PlusButtonProps> = () => {
   return (
     <Pressable onPress={onPress} style={styles.plusButton}>
       <Animated.View style={[animatedStyles]}>
-        <Text style={[{ fontSize: 25 }]}>{`+`}</Text>
+        <PlusIcon height={20} width={20} fill={colors.WHITE} />
       </Animated.View>
     </Pressable>
   );

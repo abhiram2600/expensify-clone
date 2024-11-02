@@ -1,12 +1,13 @@
 import React from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { Image, Pressable, StyleSheet } from "react-native";
 import { View, Text } from "@/components";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { useAppStore } from "@/store/AppStore";
 import { colors } from "@/constants/colors";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { PlusButton } from "./PlusButton";
 import { constants } from "@/constants/constants";
+import { Inbox, MoneySearch } from "@/assets/images/icons";
+import { profilePlaceHolder } from "@/assets/images";
 
 export const TabBarComponent = ({
   state,
@@ -14,6 +15,30 @@ export const TabBarComponent = ({
   navigation,
 }: BottomTabBarProps) => {
   const theme = useAppStore((state) => state.theme);
+
+  const tabIcon = {
+    Inbox: (isFocused: boolean) => (
+      <Inbox
+        height={25}
+        width={25}
+        fill={isFocused ? colors.GREEN : colors.GREY}
+      />
+    ),
+    Search: (isFocused: boolean) => (
+      <MoneySearch
+        height={25}
+        width={25}
+        fill={isFocused ? colors.GREEN : colors.GREY}
+      />
+    ),
+    Settings: (isFocused: boolean) => (
+      <Image
+        source={profilePlaceHolder}
+        style={[styles.profileImage, isFocused && styles.profileImageFocused]}
+      />
+    ),
+  };
+
   return (
     <View.Row
       style={[
@@ -48,13 +73,7 @@ export const TabBarComponent = ({
             onPress={onPress}
             style={styles.itemStyle}
           >
-            <View
-              style={{
-                height: 25,
-                width: 25,
-                backgroundColor: isFocused ? "green" : "grey",
-              }}
-            />
+            {tabIcon[label as keyof typeof tabIcon](isFocused)}
             <Text
               style={[
                 styles.textStyle,
@@ -89,5 +108,14 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 11,
+  },
+  profileImage: {
+    height: 25,
+    width: 25,
+    borderRadius: 12.5,
+  },
+  profileImageFocused: {
+    borderWidth: 1,
+    borderColor: colors.GREEN,
   },
 });
