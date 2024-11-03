@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     width: "auto",
     height: scaleSize(1),
     borderRadius: scaleSize(1),
-    backgroundColor: colors.GREY,
+    backgroundColor: colors.LIGHT_GREEN_3,
   },
 });

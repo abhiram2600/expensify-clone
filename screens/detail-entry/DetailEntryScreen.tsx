@@ -7,7 +7,7 @@ import {
 } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Header } from "./components";
-import { GenericInput } from "./components/GenericInputComponent";
+import { GenericInput } from "../../components/GenericInputComponent";
 import { Button } from "react-native";
 import { View } from "@/components";
 import { useAppStore } from "@/store/AppStore";

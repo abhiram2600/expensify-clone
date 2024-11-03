@@ -10,7 +10,7 @@ const App: React.FC<AppProps> = () => {
   return (
     <>
       <SafeAreaProvider>
-        <Navigator isSignedIn={true} />
+        <Navigator />
       </SafeAreaProvider>
       <GenericModal />
     </>

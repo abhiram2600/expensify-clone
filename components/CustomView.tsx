@@ -4,6 +4,8 @@ import {
   ViewProps as RNViewProps,
   StyleSheet,
   Dimensions,
+  Pressable,
+  Keyboard,
 } from "react-native";
 import {
   SafeAreaView,
@@ -23,6 +25,7 @@ interface SafeAreaViewProps extends RNSafeAreaViewProps {
 interface ViewTypes {
   Row: React.FC<ViewProps>;
   SafeAreaView: React.FC<SafeAreaViewProps>;
+  HandleKeyboard: React.FC<RNViewProps>;
 }
 
 export const View: React.FC<ViewProps> & ViewTypes = ({
@@ -81,6 +84,16 @@ View.SafeAreaView = ({
         {children}
       </SafeAreaView>
     </>
+  );
+};
+
+View.HandleKeyboard = ({ children, style, ...props }) => {
+  return (
+    <Pressable onPress={Keyboard.dismiss} accessible={false}>
+      <View style={[{ height: "100%" }, style]} {...props}>
+        {children}
+      </View>
+    </Pressable>
   );
 };
 

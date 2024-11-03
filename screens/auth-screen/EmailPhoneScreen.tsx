@@ -1,0 +1,55 @@
+import React, { useState } from "react";
+import { View, CommonButton, Text } from "@/components";
+import { StyleSheet, TextInput } from "react-native";
+import { colors } from "@/constants/colors";
+import { TextContentEPScreen } from "./components/TextContent";
+import { SignInGA } from "./components/SignInGA";
+import { AuthStackList } from "@/navigation/AuthFlowNavigator";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+
+export const EmailPhoneScreen = () => {
+  const navigation: NavigationProp<AuthStackList> = useNavigation();
+  const [email, setEmail] = useState("");
+  const onPress = () => {
+    if (email) {
+      navigation.navigate("OneTimeCode", {
+        email: email,
+      });
+    }
+  };
+  return (
+    <View.SafeAreaView style={styles.container}>
+      <View.HandleKeyboard>
+        <TextContentEPScreen />
+        <TextInput
+          value={email}
+          onChangeText={(value) => setEmail(value)}
+          placeholder="Phone or email"
+          style={styles.textInput}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <CommonButton onPress={onPress}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </CommonButton>
+        <SignInGA />
+      </View.HandleKeyboard>
+    </View.SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 35,
+    paddingHorizontal: 35,
+  },
+  textInput: {
+    width: "100%",
+    borderBottomWidth: 1.5,
+    borderColor: colors.LIGHT_GREEN_3,
+    height: 40,
+    color: colors.WHITE,
+    marginBottom: 20,
+  },
+  buttonText: {},
+});
