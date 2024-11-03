@@ -28,7 +28,7 @@ export const Details: React.FC<DetailsProps> = ({ id }) => {
   };
 
   return (
-    <View style={{ marginTop: "auto" }}>
+    <View style={styles.container}>
       <ReceiptImage />
       <IndividualDetail
         title={"Amount"}
@@ -40,12 +40,14 @@ export const Details: React.FC<DetailsProps> = ({ id }) => {
         title={"Description"}
         value={detailData?.description}
         onPressItem={onPressItem}
+        editable={true}
       />
 
       <IndividualDetail
         title={"Merchant"}
         value={detailData?.merchant}
         onPressItem={onPressItem}
+        editable={true}
       />
 
       <IndividualDetail
@@ -57,4 +59,9 @@ export const Details: React.FC<DetailsProps> = ({ id }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    gap: 10,
+    marginTop: "auto",
+  },
+});

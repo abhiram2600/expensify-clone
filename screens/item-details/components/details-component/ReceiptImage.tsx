@@ -6,10 +6,10 @@ interface ReceiptImageProps {}
 
 export const ReceiptImage: React.FC<ReceiptImageProps> = () => {
   return (
-    <>
+    <View>
       <Text style={styles.text}>Receipt</Text>
       <View style={styles.receiptImg} />
-    </>
+    </View>
   );
 };
 
@@ -22,6 +22,5 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: "gray",
     borderRadius: 20,
-    marginBottom: 20,
   },
 });

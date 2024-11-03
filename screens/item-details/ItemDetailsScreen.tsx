@@ -11,7 +11,7 @@ export const ItemDetailsScreen = () => {
   const { id } = route.params;
   return (
     <View.SafeAreaView style={{ flex: 1 }}>
-      <CustomHeader />
+      <CustomHeader id={id} />
       <Details id={id} />
     </View.SafeAreaView>
   );

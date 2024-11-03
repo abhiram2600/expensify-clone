@@ -3,17 +3,20 @@ import { Pressable, StyleSheet } from "react-native";
 import { View, Text } from "@/components";
 import { colors } from "@/constants/colors";
 import { valueType } from "@/constants/data";
+import { ArrowGrey } from "@/assets/images/icons";
 
 interface IndividualDetailProps {
   title: string;
   value: valueType;
   onPressItem: (title: string, value: valueType) => void;
+  editable?: boolean;
 }
 
 export const IndividualDetail: React.FC<IndividualDetailProps> = ({
   title,
   value,
   onPressItem,
+  editable = false,
 }) => {
   if (value instanceof Date) {
     value = value.toISOString().split("T")[0];
@@ -24,6 +27,7 @@ export const IndividualDetail: React.FC<IndividualDetailProps> = ({
   return (
     <Pressable
       onPress={() => onPressItem(title, value)}
+      disabled={!editable}
       style={({ pressed }) => [
         styles.container,
         pressed && { backgroundColor: colors.LIGHT_GREEN },
@@ -31,14 +35,14 @@ export const IndividualDetail: React.FC<IndividualDetailProps> = ({
     >
       {value ? (
         <View>
-          <Text>{title}</Text>
-          <Text>{value}</Text>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.value}>{value}</Text>
         </View>
       ) : (
         <Text>{title}</Text>
       )}
 
-      <Text>{`>`}</Text>
+      {editable && <ArrowGrey height={25} width={25} />}
     </Pressable>
   );
 };
@@ -48,9 +52,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 5,
     padding: 10,
     height: 50,
     borderRadius: 10,
+  },
+  title: {
+    fontSize: 12,
+    color: colors.GREY,
+  },
+  value: {
+    fontSize: 16,
+    color: colors.WHITE,
   },
 });

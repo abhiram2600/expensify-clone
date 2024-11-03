@@ -15,16 +15,14 @@ interface PlusButtonProps {}
 export const PlusButton: React.FC<PlusButtonProps> = () => {
   const changeModalState = useAppStore((state) => state.changeModalState);
   const { isVisible } = useAppStore((state) => state.modalState);
-
   const deg = useSharedValue(0);
 
-  if (isVisible) {
-    deg.value = withSpring(deg.value + 45);
-  } else if (deg.value >= 45) {
-    deg.value = withSpring(deg.value - 45);
+  if (!isVisible && deg.value !== 0) {
+    deg.value = withSpring(0);
   }
 
   const onPress = () => {
+    deg.value = withSpring(deg.value + 45);
     changeModalState({ isVisible: true, type: modalTypeState.PLUSBUTTON });
   };
 
