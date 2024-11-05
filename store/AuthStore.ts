@@ -13,6 +13,7 @@ interface AuthState {
     authToken?: string | null;
     userDetails?: userDetailsType | null;
   }) => void;
+  logOut: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -24,5 +25,10 @@ export const useAuthStore = create<AuthState>((set) => ({
         auth.authToken !== undefined ? auth.authToken : state.authToken,
       userDetails:
         auth.userDetails !== undefined ? auth.userDetails : state.userDetails,
+    })),
+  logOut: () =>
+    set(() => ({
+      authToken: null,
+      userDetails: null,
     })),
 }));

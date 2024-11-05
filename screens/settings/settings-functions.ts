@@ -1,4 +1,4 @@
-import { useThemeStore } from "@/store";
+import { useAuthStore, useThemeStore } from "@/store";
 
 export const settingsFunctions = {
   Profile: () => null,
@@ -9,5 +9,5 @@ export const settingsFunctions = {
   Domains: () => null,
   Help: () => null,
   About: () => null,
-  Sign_Out: () => null,
+  Sign_Out: () => useAuthStore.getState().logOut(),
 };

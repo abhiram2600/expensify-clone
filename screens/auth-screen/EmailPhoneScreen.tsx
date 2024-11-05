@@ -6,6 +6,7 @@ import { SignInGA } from "./components/SignInGA";
 import { AuthStackList } from "@/navigation/AuthFlowNavigator";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useThemeStore } from "@/store";
+import { staticColors } from "@/constants/colors";
 
 export const EmailPhoneScreen = () => {
   const colors = useThemeStore((state) => state.colors);
@@ -57,5 +58,7 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 20,
   },
-  buttonText: {},
+  buttonText: {
+    color: staticColors.WHITE,
+  },
 });

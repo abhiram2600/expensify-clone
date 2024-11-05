@@ -1,3 +1,4 @@
+import { useThemeStore } from "@/store";
 import React from "react";
 import {
   View as RNView,
@@ -5,6 +6,7 @@ import {
   StyleSheet,
   Pressable,
   Keyboard,
+  Dimensions,
 } from "react-native";
 import {
   SafeAreaView,
@@ -59,17 +61,30 @@ View.SafeAreaView = ({
   style,
   ...props
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   return (
-    <SafeAreaView
-      style={[
-        addPaddingHorizontal && styles.paddingHorizontal,
-        styles.container,
-        style,
-      ]}
-      {...props}
-    >
-      {children}
-    </SafeAreaView>
+    <>
+      <RNView
+        style={[
+          {
+            position: "absolute",
+            height: Dimensions.get("window").height,
+            width: Dimensions.get("window").width,
+            backgroundColor: colors.background,
+          },
+        ]}
+      />
+      <SafeAreaView
+        style={[
+          addPaddingHorizontal && styles.paddingHorizontal,
+          styles.container,
+          style,
+        ]}
+        {...props}
+      >
+        {children}
+      </SafeAreaView>
+    </>
   );
 };
 

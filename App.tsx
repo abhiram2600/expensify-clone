@@ -4,7 +4,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { GenericModal } from "./screens";
 import { useThemeStore } from "./store/ThemeStore";
 import { StatusBar } from "expo-status-bar";
-import { Dimensions, View } from "react-native";
 
 interface AppProps {}
 
@@ -13,16 +12,6 @@ const App: React.FC<AppProps> = () => {
 
   return (
     <>
-      <View
-        style={[
-          {
-            position: "absolute",
-            height: Dimensions.get("window").height,
-            width: Dimensions.get("window").width,
-            backgroundColor: colors.background,
-          },
-        ]}
-      />
       <SafeAreaProvider>
         <Navigator />
       </SafeAreaProvider>
