@@ -14,7 +14,6 @@ export const TabBarComponent = ({
   descriptors,
   navigation,
 }: BottomTabBarProps) => {
-  const theme = useAppStore((state) => state.theme);
   const colors = useThemeStore((state) => state.colors);
   const tabIcon = {
     Inbox: (isFocused: boolean) => (

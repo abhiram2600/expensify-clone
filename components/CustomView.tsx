@@ -3,7 +3,6 @@ import {
   View as RNView,
   ViewProps as RNViewProps,
   StyleSheet,
-  Dimensions,
   Pressable,
   Keyboard,
 } from "react-native";
@@ -11,8 +10,6 @@ import {
   SafeAreaView,
   SafeAreaViewProps as RNSafeAreaViewProps,
 } from "react-native-safe-area-context";
-import { useAppStore } from "@/store/AppStore";
-import { useThemeStore } from "@/store";
 
 interface ViewProps extends RNViewProps {
   addPaddingHorizontal?: boolean;
@@ -62,29 +59,17 @@ View.SafeAreaView = ({
   style,
   ...props
 }) => {
-  const theme = useAppStore((state) => state.theme);
-  const colors = useThemeStore((state) => state.colors);
   return (
-    <>
-      <RNView
-        style={[
-          styles.background,
-          {
-            backgroundColor: colors.background,
-          },
-        ]}
-      />
-      <SafeAreaView
-        style={[
-          addPaddingHorizontal && styles.paddingHorizontal,
-          styles.container,
-          style,
-        ]}
-        {...props}
-      >
-        {children}
-      </SafeAreaView>
-    </>
+    <SafeAreaView
+      style={[
+        addPaddingHorizontal && styles.paddingHorizontal,
+        styles.container,
+        style,
+      ]}
+      {...props}
+    >
+      {children}
+    </SafeAreaView>
   );
 };
 
@@ -101,11 +86,6 @@ View.HandleKeyboard = ({ children, style, ...props }) => {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
-  },
-  background: {
-    position: "absolute",
-    height: Dimensions.get("window").height,
-    width: Dimensions.get("window").width,
   },
   paddingHorizontal: {
     paddingHorizontal: 15,

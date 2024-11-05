@@ -18,7 +18,6 @@ export const Text: React.FC<TextProps> = ({
   ...props
 }) => {
   const colors = useThemeStore((state) => state.colors);
-  const theme = useAppStore((state) => state.theme);
 
   const styles: RNTextProps["style"] = (() => {
     switch (variant) {
