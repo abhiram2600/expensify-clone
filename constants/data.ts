@@ -1,4 +1,3 @@
-import { expensifyLogo, profilePlaceHolder } from "@/assets/images";
 import { GenericIconGreen } from "@/assets/images/icons";
 import GenericIcon from "@/assets/images/icons/generic-icon.svg";
 
@@ -28,6 +27,7 @@ export type ledgerItemType = {
   toImage: any;
 };
 
+// Temporary data
 export const doNotUseItDirectlyData: ledgerItemType[] = [
   {
     id: 1,
@@ -41,8 +41,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: false,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: "https://picsum.photos/150",
   },
   {
     id: 2,
@@ -56,8 +56,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: true,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: null,
   },
   {
     id: 3,
@@ -71,8 +71,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: false,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: "https://picsum.photos/150",
   },
   {
     id: 4,
@@ -86,8 +86,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: true,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: null,
   },
   {
     id: 5,
@@ -101,8 +101,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: false,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: "https://picsum.photos/150",
   },
   {
     id: 6,
@@ -116,8 +116,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: false,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: null,
   },
   {
     id: 7,
@@ -131,8 +131,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: true,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: null,
   },
   {
     id: 8,
@@ -146,8 +146,8 @@ export const doNotUseItDirectlyData: ledgerItemType[] = [
     paid: false,
     to: "Abhiram",
     from: "Expensify",
-    fromImage: expensifyLogo,
-    toImage: profilePlaceHolder,
+    fromImage: "https://picsum.photos/150",
+    toImage: "https://picsum.photos/150",
   },
 ];
 

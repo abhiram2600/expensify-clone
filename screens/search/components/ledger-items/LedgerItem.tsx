@@ -12,6 +12,7 @@ import { RootStackList } from "@/navigation/RootFlowNavigator";
 import { ledgerItemType } from "@/constants/data";
 import { getFormattedDate } from "@/constants/util";
 import { useThemeStore } from "@/store";
+import { profilePlaceHolder } from "@/assets/images";
 
 export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
   const navigation: NavigationProp<RootStackList> = useNavigation();
@@ -33,12 +34,18 @@ export const LedgerItem = ({ item }: { item: ledgerItemType }) => {
       onPress={handleOnPress}
     >
       <View.Row style={styles.participantsContainer}>
-        <Image source={item.fromImage} style={styles.profileImage} />
+        <Image
+          source={item.fromImage ? { uri: item.fromImage } : profilePlaceHolder}
+          style={styles.profileImage}
+        />
         <Text style={[styles.fromToText, { color: colors.textPrimary }]}>
           {item.from}
         </Text>
         <ArrowRight height={10} width={10} />
-        <Image source={item.toImage} style={styles.profileImage} />
+        <Image
+          source={item.toImage ? { uri: item.toImage } : profilePlaceHolder}
+          style={styles.profileImage}
+        />
         <Text style={[styles.fromToText, { color: colors.textPrimary }]}>
           {item.to}
         </Text>

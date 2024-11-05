@@ -12,7 +12,6 @@ interface LedgerItemsProps {
 
 export const LedgerItems: React.FC<LedgerItemsProps> = ({ currentStatus }) => {
   const data = useAppStore((state) => state.data);
-
   const [currentLedgerItems, setCurrentLedgerItems] = useState(data);
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export const LedgerItems: React.FC<LedgerItemsProps> = ({ currentStatus }) => {
       const newData = data.filter(({ status }) => status === currentStatus);
       setCurrentLedgerItems(newData);
     }
-  }, [currentStatus]);
+  }, [currentStatus, data]);
 
   return (
     <FlatList
@@ -30,7 +29,7 @@ export const LedgerItems: React.FC<LedgerItemsProps> = ({ currentStatus }) => {
       showsVerticalScrollIndicator={false}
       renderItem={({ item }) => <LedgerItem item={item} />}
       keyExtractor={(item) => item.id.toString()}
-      extraData={currentStatus}
+      extraData={currentStatus || data}
       contentContainerStyle={styles.container}
       ListFooterComponent={
         <View style={{ height: constants.bottomTabHeight }} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "@/components";
+import { View } from "@/components";
 import { modalTypeState, useAppStore } from "@/store/AppStore";
 import Modal from "react-native-modal";
 import { AddExpensesModalContent } from "./modal-content/AddExpensesModalContent";
@@ -15,7 +15,7 @@ export const GenericModal: React.FC<GenericModalProps> = () => {
   const Content = (() => {
     switch (modalState.type) {
       case modalTypeState.PICKERFILTER:
-        return AddExpensesModalContent;
+        return () => <View />; //Temporary till data is implemented
       case modalTypeState.PLUSBUTTON:
         return AddExpensesModalContent;
       default:

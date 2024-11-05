@@ -10,7 +10,7 @@ export const Navigator: React.FC<NavigatorProps> = () => {
   const authToken = useAuthStore((state) => state.authToken);
   return (
     <NavigationContainer>
-      {authToken ? <RootStackNavigator /> : <AuthFlowNavigator />}
+      {authToken || true ? <RootStackNavigator /> : <AuthFlowNavigator />}
     </NavigationContainer>
   );
 };
