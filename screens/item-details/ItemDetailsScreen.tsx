@@ -10,7 +10,10 @@ export const ItemDetailsScreen = () => {
   const route = useRoute<ItemDetailRouteProp>();
   const { id } = route.params;
   return (
-    <View.SafeAreaView style={{ flex: 1 }}>
+    <View.SafeAreaView
+      addPaddingHorizontal
+      style={{ flex: 1 }} // Temporary fix till chat feature implemented
+    >
       <CustomHeader id={id} />
       <Details id={id} />
     </View.SafeAreaView>

@@ -7,7 +7,7 @@ import {
   TextInput,
   TextInputKeyPressEventData,
 } from "react-native";
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 
 interface PasscodeInputProps {
   passcode: string[];
@@ -18,6 +18,7 @@ export const PasscodeInput: React.FC<PasscodeInputProps> = ({
   passcode,
   setPasscode,
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   const inputRef = useRef<(TextInput | null)[]>([]);
   const onChangeText = (value: string, idx: number) => {
     const newCode = [...passcode];
@@ -42,7 +43,10 @@ export const PasscodeInput: React.FC<PasscodeInputProps> = ({
     <View.Row style={styles.container}>
       {passcode.map((digit, idx) => (
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            { backgroundColor: colors.COLOR_3, color: colors.WHITE },
+          ]}
           value={digit}
           keyboardType="numeric"
           key={idx}
@@ -67,10 +71,8 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 3,
-    borderColor: colors.LIGHT_GREEN_3,
     fontSize: 25,
     width: (Dimensions.get("window").width - 130) / 6,
-    color: colors.WHITE,
     padding: 10,
     textAlign: "center",
   },

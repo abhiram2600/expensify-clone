@@ -12,6 +12,7 @@ import { GenericInput } from "../../components/GenericInputComponent";
 import { CommonButton, View, Text } from "@/components";
 import { useAppStore } from "@/store/AppStore";
 import { StyleSheet } from "react-native";
+import { useThemeStore } from "@/store";
 
 type DetailEntryRouteProp = RouteProp<RootStackList, "DetailEntry">;
 
@@ -24,6 +25,7 @@ export const DetailEntryScreen = () => {
 
   const [currentValue, setCurrentValue] = useState(value);
   const updateData = useAppStore((state) => state.updateDataUsingId);
+  const colors = useThemeStore((state) => state.colors);
 
   const onPressBackButton = () => {
     navigation.goBack();
@@ -44,7 +46,7 @@ export const DetailEntryScreen = () => {
           placeholder={`Enter ${title}`}
         />
         <CommonButton onPress={onPressSaveButton} style={styles.saveButton}>
-          <Text>Save</Text>
+          <Text style={{ color: colors.invertedColor }}>Save</Text>
         </CommonButton>
       </View.HandleKeyboard>
     </View.SafeAreaView>

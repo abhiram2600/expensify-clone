@@ -3,11 +3,11 @@ import { Image, Pressable, StyleSheet } from "react-native";
 import { View, Text } from "@/components";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { useAppStore } from "@/store/AppStore";
-import { colors } from "@/constants/colors";
 import { PlusButton } from "./PlusButton";
 import { constants } from "@/constants/constants";
 import { Inbox, MoneySearch } from "@/assets/images/icons";
 import { profilePlaceHolder } from "@/assets/images";
+import { useThemeStore } from "@/store";
 
 export const TabBarComponent = ({
   state,
@@ -15,7 +15,7 @@ export const TabBarComponent = ({
   navigation,
 }: BottomTabBarProps) => {
   const theme = useAppStore((state) => state.theme);
-
+  const colors = useThemeStore((state) => state.colors);
   const tabIcon = {
     Inbox: (isFocused: boolean) => (
       <Inbox
@@ -34,7 +34,15 @@ export const TabBarComponent = ({
     Settings: (isFocused: boolean) => (
       <Image
         source={profilePlaceHolder}
-        style={[styles.profileImage, isFocused && styles.profileImageFocused]}
+        style={[
+          styles.profileImage,
+          isFocused && [
+            styles.profileImageFocused,
+            {
+              borderColor: colors.GREEN,
+            },
+          ],
+        ]}
       />
     ),
   };
@@ -44,7 +52,8 @@ export const TabBarComponent = ({
       style={[
         styles.tabBar,
         {
-          backgroundColor: colors[theme].BACKGROUND,
+          backgroundColor: colors.background,
+          borderTopColor: colors.COLOR_1,
           height: constants.bottomTabHeight, // 72 in the app
         },
       ]}
@@ -78,9 +87,7 @@ export const TabBarComponent = ({
               style={[
                 styles.textStyle,
                 {
-                  color: isFocused
-                    ? colors[theme].BOLD_TEXT
-                    : colors[theme].REGULAR_TEXT,
+                  color: isFocused ? colors.textPrimary : colors.textSecondary,
                 },
               ]}
             >
@@ -97,7 +104,6 @@ export const TabBarComponent = ({
 const styles = StyleSheet.create({
   tabBar: {
     width: "100%",
-    borderTopColor: colors.LIGHT_GREEN,
     borderTopWidth: 1,
     justifyContent: "space-around",
     paddingTop: 10,
@@ -116,6 +122,5 @@ const styles = StyleSheet.create({
   },
   profileImageFocused: {
     borderWidth: 3,
-    borderColor: colors.GREEN,
   },
 });

@@ -1,5 +1,4 @@
 import { Text } from "@/components/CustomText";
-import { colors } from "@/constants/colors";
 import React, { useState } from "react";
 import {
   ScrollView,
@@ -11,6 +10,7 @@ import {
 } from "react-native";
 import { filters, status } from "../../../constants/data";
 import { View } from "@/components";
+import { useThemeStore } from "@/store";
 
 interface TypeSelectorProps {
   setCurrentStatus: (newStatus: status) => void;
@@ -19,6 +19,7 @@ interface TypeSelectorProps {
 export const TypeSelector: React.FC<TypeSelectorProps> = ({
   setCurrentStatus,
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   const [currentIndex, setCurrentIndex] = useState(0);
   const changeCurrentStatus = (idx: number, status: status) => {
     setCurrentIndex(idx);
@@ -36,8 +37,10 @@ export const TypeSelector: React.FC<TypeSelectorProps> = ({
           let textStyle: StyleProp<TextStyle> = [styles.text];
           let Icon = item.icon;
           if (idx === currentIndex) {
-            containerStyle.push(styles.itemSelected);
-            textStyle.push(styles.itemSelectedText);
+            containerStyle.push({
+              backgroundColor: colors.COLOR_1,
+            });
+            textStyle.push({ color: colors.textPrimary });
             Icon = item.iconSelected;
           }
           return (
@@ -77,11 +80,5 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 12,
-  },
-  itemSelected: {
-    backgroundColor: colors.LIGHT_GREEN,
-  },
-  itemSelectedText: {
-    color: "white",
   },
 });

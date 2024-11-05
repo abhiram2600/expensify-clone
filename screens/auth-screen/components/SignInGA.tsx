@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "@/components";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { colors } from "@/constants/colors";
+import { staticColors } from "@/constants/colors";
 
 interface SignInGAProps {}
 
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   signInText: {
     textAlign: "center",
-    color: colors.GREY,
+    color: staticColors.GREY,
     fontSize: 12,
   },
   socialsComponent: {
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     borderRadius: 15,
-    backgroundColor: colors.WHITE,
+    backgroundColor: staticColors.WHITE,
   },
 });

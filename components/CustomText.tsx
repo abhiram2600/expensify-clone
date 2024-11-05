@@ -1,4 +1,4 @@
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 import { useAppStore } from "@/store/AppStore";
 import React from "react";
 import { Text as RNText, TextProps as RNTextProps } from "react-native";
@@ -17,6 +17,7 @@ export const Text: React.FC<TextProps> = ({
   style,
   ...props
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   const theme = useAppStore((state) => state.theme);
 
   const styles: RNTextProps["style"] = (() => {
@@ -26,7 +27,7 @@ export const Text: React.FC<TextProps> = ({
       case "bold":
         return [
           {
-            color: colors[theme].BOLD_TEXT,
+            color: colors.textPrimary,
             fontWeight: "bold",
           },
           style,
@@ -34,7 +35,7 @@ export const Text: React.FC<TextProps> = ({
       case "regular":
         return [
           {
-            color: colors[theme].REGULAR_TEXT,
+            color: colors.textSecondary,
             fontWeight: "400",
           },
           style,

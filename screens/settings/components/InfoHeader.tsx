@@ -2,21 +2,24 @@ import React from "react";
 import { StyleSheet, Image } from "react-native";
 import { View, Text } from "@/components";
 import { profilePlaceHolder } from "@/assets/images";
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 
 interface InfoHeaderProps {}
 
 export const InfoHeader: React.FC<InfoHeaderProps> = () => {
+  const xyz = useThemeStore((state) => state.colors);
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>
         <Image source={profilePlaceHolder} style={styles.profilePicture} />
         <View style={styles.nameAndEmail}>
-          <Text style={styles.nameText}>Abhi</Text>
+          <Text style={[styles.nameText, { color: xyz.textPrimary }]}>
+            Abhi
+          </Text>
           <Text style={styles.emailText}>email</Text>
         </View>
       </View>
-      <View style={styles.emojiPicker} />
+      <View style={[styles.emojiPicker, { backgroundColor: xyz.COLOR_3 }]} />
     </View>
   );
 };
@@ -42,7 +45,6 @@ const styles = StyleSheet.create({
   nameText: {
     fontWeight: "bold",
     fontSize: 16,
-    color: colors.WHITE,
   },
   emailText: {
     fontSize: 13,
@@ -51,6 +53,5 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
-    backgroundColor: colors.LIGHT_GREEN_3,
   },
 });

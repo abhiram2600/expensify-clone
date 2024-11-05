@@ -1,10 +1,10 @@
+import { useThemeStore } from "@/store/ThemeStore";
 import React from "react";
 import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
 } from "react-native";
-import { colors } from "@/constants/colors";
 
 interface CommonButtonProps extends TouchableOpacityProps {}
 
@@ -13,8 +13,12 @@ export const CommonButton: React.FC<CommonButtonProps> = ({
   style,
   ...props
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   return (
-    <TouchableOpacity style={[styles.button, style]} {...props}>
+    <TouchableOpacity
+      style={[styles.button, { backgroundColor: colors.GREEN }, style]}
+      {...props}
+    >
       {children}
     </TouchableOpacity>
   );
@@ -24,7 +28,6 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     height: 50,
-    backgroundColor: colors.GREEN,
     borderRadius: 25,
     justifyContent: "center",
     alignItems: "center",

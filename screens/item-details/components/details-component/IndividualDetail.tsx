@@ -1,9 +1,9 @@
 import React from "react";
 import { Pressable, StyleSheet } from "react-native";
 import { View, Text } from "@/components";
-import { colors } from "@/constants/colors";
 import { valueType } from "@/constants/data";
 import { ArrowGrey } from "@/assets/images/icons";
+import { useThemeStore } from "@/store";
 
 interface IndividualDetailProps {
   title: string;
@@ -18,6 +18,8 @@ export const IndividualDetail: React.FC<IndividualDetailProps> = ({
   onPressItem,
   editable = false,
 }) => {
+  const colors = useThemeStore((state) => state.colors);
+
   if (value instanceof Date) {
     value = value.toISOString().split("T")[0];
   } else {
@@ -30,13 +32,17 @@ export const IndividualDetail: React.FC<IndividualDetailProps> = ({
       disabled={!editable}
       style={({ pressed }) => [
         styles.container,
-        pressed && { backgroundColor: colors.LIGHT_GREEN },
+        pressed && { backgroundColor: colors.COLOR_2 },
       ]}
     >
       {value ? (
         <View>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.value}>{value}</Text>
+          <Text style={[styles.title, { color: colors.textSecondary }]}>
+            {title}
+          </Text>
+          <Text style={[styles.value, { color: colors.textPrimary }]}>
+            {value}
+          </Text>
         </View>
       ) : (
         <Text>{title}</Text>
@@ -58,10 +64,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 12,
-    color: colors.GREY,
   },
   value: {
     fontSize: 16,
-    color: colors.WHITE,
   },
 });

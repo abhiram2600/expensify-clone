@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { View, CommonButton, Text } from "@/components";
 import { StyleSheet, TextInput } from "react-native";
-import { colors } from "@/constants/colors";
 import { TextContentEPScreen } from "./components/TextContent";
 import { SignInGA } from "./components/SignInGA";
 import { AuthStackList } from "@/navigation/AuthFlowNavigator";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { useThemeStore } from "@/store";
 
 export const EmailPhoneScreen = () => {
+  const colors = useThemeStore((state) => state.colors);
+
   const navigation: NavigationProp<AuthStackList> = useNavigation();
   const [email, setEmail] = useState("");
   const onPress = () => {
@@ -25,7 +27,13 @@ export const EmailPhoneScreen = () => {
           value={email}
           onChangeText={(value) => setEmail(value)}
           placeholder="Phone or email"
-          style={styles.textInput}
+          style={[
+            styles.textInput,
+            {
+              borderColor: colors.COLOR_3,
+              color: colors.WHITE,
+            },
+          ]}
           keyboardType="email-address"
           autoCapitalize="none"
         />
@@ -46,9 +54,7 @@ const styles = StyleSheet.create({
   textInput: {
     width: "100%",
     borderBottomWidth: 1.5,
-    borderColor: colors.LIGHT_GREEN_3,
     height: 40,
-    color: colors.WHITE,
     marginBottom: 20,
   },
   buttonText: {},

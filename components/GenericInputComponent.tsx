@@ -1,4 +1,4 @@
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 import React from "react";
 import { TextInput, StyleSheet } from "react-native";
 
@@ -15,9 +15,13 @@ export const GenericInput: React.FC<GenericInputProps> = ({
   onChangeText,
   placeholder,
 }) => {
+  const colors = useThemeStore((state) => state.colors);
   return (
     <TextInput
-      style={styles.input}
+      style={[
+        styles.input,
+        { color: colors.textPrimary, borderBottomColor: colors.GREY },
+      ]}
       value={value.toString()}
       onChangeText={onChangeText}
       keyboardType={typeof value === "string" ? "default" : "number-pad"}
@@ -30,8 +34,6 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     height: 50,
-    borderBottomWidth: 2,
-    borderColor: colors.LIGHT_GREEN_3,
-    color: "white",
+    borderBottomWidth: 1,
   },
 });

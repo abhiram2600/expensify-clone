@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { ArrowGrey, Profile } from "@/assets/images/icons";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackList } from "@/navigation/RootFlowNavigator";
-import { colors } from "@/constants/colors";
+import { staticColors } from "@/constants/colors";
 
 interface CustomHeaderProps {
   id: number;
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   nameText: {
-    color: colors.BLUE,
+    color: staticColors.BLUE,
   },
 });

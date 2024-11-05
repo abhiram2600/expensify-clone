@@ -1,26 +1,32 @@
 import { StatusBarStyle } from "expo-status-bar";
 
-export const colors = {
-  DARK: {
-    BACKGROUND: "#061B09",
-    BOLD_TEXT: "#FFFFFF",
-    REGULAR_TEXT: "#FFFFFF",
-    STATUSBAR: "light" as StatusBarStyle,
-    GREEN: "green",
-  },
-  LIGHT: {
-    BACKGROUND: "#F8F4F0",
-    BOLD_TEXT: "#000000",
-    REGULAR_TEXT: "#FFFFFF",
-    STATUSBAR: "dark" as StatusBarStyle,
-    GREEN: "green",
-  },
+export const staticColors = {
   WHITE: "#FFFFFF",
   GREY: "#808080",
-  LIGHT_GREEN: "#072419",
-  LIGHT_GREEN_2: "#0A2E25",
-  LIGHT_GREEN_3: "#1A3D32",
   GREEN: "#008000",
   BLACK: "#000000",
   BLUE: "#00B4D8",
+};
+
+export const themeColors = {
+  LIGHT: {
+    background: "#FCFBF9",
+    textPrimary: staticColors.BLACK,
+    textSecondary: staticColors.GREY,
+    COLOR_1: "#F8F4F0",
+    COLOR_2: "#F2EDE7",
+    COLOR_3: "#E6E1DA",
+    statusBar: "dark" as StatusBarStyle,
+    invertedColor: staticColors.WHITE,
+  },
+  DARK: {
+    background: "#061B09",
+    textPrimary: staticColors.WHITE,
+    textSecondary: staticColors.GREY,
+    COLOR_1: "#072419",
+    COLOR_2: "#0A2E25",
+    COLOR_3: "#1A3D32",
+    statusBar: "light" as StatusBarStyle,
+    invertedColor: staticColors.WHITE,
+  },
 };

@@ -11,8 +11,8 @@ import {
   SafeAreaView,
   SafeAreaViewProps as RNSafeAreaViewProps,
 } from "react-native-safe-area-context";
-import { colors } from "@/constants/colors";
 import { useAppStore } from "@/store/AppStore";
+import { useThemeStore } from "@/store";
 
 interface ViewProps extends RNViewProps {
   addPaddingHorizontal?: boolean;
@@ -63,13 +63,14 @@ View.SafeAreaView = ({
   ...props
 }) => {
   const theme = useAppStore((state) => state.theme);
+  const colors = useThemeStore((state) => state.colors);
   return (
     <>
       <RNView
         style={[
           styles.background,
           {
-            backgroundColor: colors[theme].BACKGROUND,
+            backgroundColor: colors.background,
           },
         ]}
       />

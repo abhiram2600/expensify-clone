@@ -1,16 +1,17 @@
 import React from "react";
 import { View, Text } from "@/components";
-import { Button } from "react-native";
 import { modalTypeState, useAppStore } from "@/store/AppStore";
 import Modal from "react-native-modal";
-import { colors } from "@/constants/colors";
 import { AddExpensesModalContent } from "./modal-content/AddExpensesModalContent";
+import { useThemeStore } from "@/store";
 
 interface GenericModalProps {}
 
 export const GenericModal: React.FC<GenericModalProps> = () => {
   const modalState = useAppStore((state) => state.modalState);
   const changeModalState = useAppStore((state) => state.changeModalState);
+  const colors = useThemeStore((state) => state.colors);
+
   const Content = (() => {
     switch (modalState.type) {
       case modalTypeState.PICKERFILTER:
@@ -32,7 +33,7 @@ export const GenericModal: React.FC<GenericModalProps> = () => {
       animationIn="slideInUp"
       animationOut="slideOutDown"
       style={{ margin: 0 }}
-      backdropColor={colors.LIGHT_GREEN_3}
+      backdropColor={colors.COLOR_3}
       backdropOpacity={0.7}
       onBackButtonPress={closeModal}
       onBackdropPress={closeModal}
@@ -43,7 +44,7 @@ export const GenericModal: React.FC<GenericModalProps> = () => {
           minHeight: "30%",
           marginTop: "auto",
           width: "100%",
-          backgroundColor: colors["DARK"].BACKGROUND,
+          backgroundColor: colors.background,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           paddingTop: 20,

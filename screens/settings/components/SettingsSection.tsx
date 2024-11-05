@@ -2,7 +2,7 @@ import { Text } from "@/components/CustomText";
 import React from "react";
 import { StyleSheet, View, Pressable } from "react-native";
 import { settingsData, settingsDataType } from "../settings-data";
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 
 interface SettingsSectionProps {
   title: keyof settingsDataType;
@@ -13,12 +13,14 @@ interface IndividualItemProps {
 }
 
 const IndividualItem: React.FC<IndividualItemProps> = ({ item }) => {
+  const colors = useThemeStore((state) => state.colors);
   return (
     <Pressable
       style={({ pressed }) => [
-        pressed ? { backgroundColor: "#1A3D32", borderRadius: 10 } : {},
         styles.itemContainer,
+        pressed && { backgroundColor: colors.COLOR_3, borderRadius: 10 },
       ]}
+      onPress={item.onPress}
     >
       <View style={styles.information}>
         <item.icon height={25} width={25} />

@@ -2,17 +2,18 @@ import React from "react";
 import { View, Text } from "@/components";
 import { Pressable, StyleSheet } from "react-native";
 import { Receipt } from "@/assets/images/icons";
-import { colors } from "@/constants/colors";
+import { useThemeStore } from "@/store";
 
 interface AddExpensesModalContentProps {}
 
 const Component = ({ icon, title }: { icon: any; title: string }) => {
   const Icon = icon;
+  const colors = useThemeStore((state) => state.colors);
   return (
     <Pressable
       style={({ pressed }) => [
         styles.buttonComponent,
-        pressed && styles.onPressViewStyle,
+        pressed && { backgroundColor: colors.COLOR_3 },
       ]}
     >
       {({ pressed }) => (
@@ -22,7 +23,12 @@ const Component = ({ icon, title }: { icon: any; title: string }) => {
             width={20}
             fill={pressed ? colors.GREEN : colors.GREY}
           />
-          <Text style={[styles.label, pressed && styles.onPressTextStyle]}>
+          <Text
+            style={[
+              styles.label,
+              pressed ? { color: colors.GREY } : { color: colors.textPrimary },
+            ]}
+          >
             {title}
           </Text>
         </>
@@ -54,12 +60,5 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: "bold",
-    color: "white",
-  },
-  onPressViewStyle: {
-    backgroundColor: colors.LIGHT_GREEN_3,
-  },
-  onPressTextStyle: {
-    color: colors.GREY,
   },
 });

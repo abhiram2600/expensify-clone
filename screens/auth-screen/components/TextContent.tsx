@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "@/components";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { colors } from "@/constants/colors";
+import { staticColors } from "@/constants/colors";
 
 export const ExpensifyTitle = () => {
   return <Text style={styles.titleText}>Expensify</Text>;
@@ -64,18 +64,18 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     textAlign: "center",
-    color: colors.GREEN,
+    color: staticColors.GREEN,
     marginBottom: 35,
   },
   captionText: {
     fontSize: 25,
     textAlign: "center",
-    color: colors.GREEN,
+    color: staticColors.GREEN,
     marginBottom: 20,
   },
   getStartedText: {
     textAlign: "center",
-    color: colors.WHITE,
+    color: staticColors.WHITE,
     fontSize: 15,
     marginBottom: 40,
   },
@@ -96,6 +96,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   blueText: {
-    color: colors.BLUE,
+    color: staticColors.BLUE,
   },
 });
