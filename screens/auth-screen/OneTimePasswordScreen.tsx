@@ -11,17 +11,22 @@ import { PasscodeInput } from "./components/PasscodeInput";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AuthStackList } from "@/navigation/AuthFlowNavigator";
 import { useAuthStore } from "@/store/AuthStore";
+import { staticColors } from "@/constants/colors";
+import { RouteProp } from "@react-navigation/native";
 
 interface OneTimePasswordScreenProps {
   navigation: NativeStackNavigationProp<AuthStackList, "OneTimeCode">;
+  route: RouteProp<AuthStackList, "OneTimeCode">;
 }
 
 export const OneTimePasswordScreen: React.FC<OneTimePasswordScreenProps> = ({
   navigation,
+  route,
 }) => {
   const changeAuthState = useAuthStore((state) => state.changeAuthState);
-  const [passcode, setPasscode] = useState(["", "", "", "", "", ""]);
+  const { email } = route.params;
 
+  const [passcode, setPasscode] = useState(["", "", "", "", "", ""]);
   const goBack = () => {
     navigation.goBack();
   };
@@ -37,13 +42,13 @@ export const OneTimePasswordScreen: React.FC<OneTimePasswordScreenProps> = ({
     <View.SafeAreaView style={styles.container}>
       <View.HandleKeyboard>
         <ExpensifyTitle />
-        <TextContentOTPasswordScreen email="a@a.com" />
+        <TextContentOTPasswordScreen email={email} />
         <PasscodeInput passcode={passcode} setPasscode={setPasscode} />
         <OTPResendText />
         <CommonButton onPress={onPressSignIn}>
-          <Text>Sign In</Text>
+          <Text style={{ color: staticColors.WHITE }}>Sign In</Text>
         </CommonButton>
-        <OTPScreenFooter email="a@a.com" goBack={goBack} />
+        <OTPScreenFooter email={email} goBack={goBack} />
       </View.HandleKeyboard>
     </View.SafeAreaView>
   );

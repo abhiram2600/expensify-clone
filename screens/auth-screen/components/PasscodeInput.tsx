@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { View } from "@/components";
 import {
   Dimensions,
@@ -20,6 +20,8 @@ export const PasscodeInput: React.FC<PasscodeInputProps> = ({
 }) => {
   const colors = useThemeStore((state) => state.colors);
   const inputRef = useRef<(TextInput | null)[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   const onChangeText = (value: string, idx: number) => {
     const newCode = [...passcode];
     newCode[idx] = value;
@@ -45,14 +47,22 @@ export const PasscodeInput: React.FC<PasscodeInputProps> = ({
         <TextInput
           style={[
             styles.input,
-            { backgroundColor: colors.COLOR_3, color: colors.WHITE },
+            {
+              color: colors.WHITE,
+              borderBottomColor: colors.COLOR_3,
+            },
+            selectedIndex === idx && { borderBottomColor: colors.GREEN },
           ]}
+          caretHidden
+          autoFocus={idx === 0 ? true : false}
           value={digit}
           keyboardType="numeric"
           key={idx}
           selectionColor={colors.BLACK}
           cursorColor={colors.BLACK}
           maxLength={1}
+          onFocus={() => setSelectedIndex(idx)}
+          onBlur={() => setSelectedIndex(-1)}
           onChangeText={(value) => onChangeText(value, idx)}
           onKeyPress={(e) => onKeyPress(e, idx)}
           ref={(ref) => {
@@ -70,10 +80,10 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   input: {
-    borderBottomWidth: 3,
     fontSize: 25,
     width: (Dimensions.get("window").width - 130) / 6,
     padding: 10,
+    borderBottomWidth: 1,
     textAlign: "center",
   },
 });

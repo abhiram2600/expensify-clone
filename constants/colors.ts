@@ -3,9 +3,9 @@ import { StatusBarStyle } from "expo-status-bar";
 export const staticColors = {
   WHITE: "#FFFFFF",
   GREY: "#808080",
-  GREEN: "#008000",
   BLACK: "#000000",
-  BLUE: "#00B4D8",
+  BLUE: "#5AB0FF",
+  GREEN: "#03D47C",
 };
 
 export const themeColors = {

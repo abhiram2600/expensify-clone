@@ -8,13 +8,18 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useThemeStore } from "@/store";
 import { staticColors } from "@/constants/colors";
 
+const isValidEmail = (email: string): boolean => {
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailPattern.test(email);
+};
+
 export const EmailPhoneScreen = () => {
   const colors = useThemeStore((state) => state.colors);
 
   const navigation: NavigationProp<AuthStackList> = useNavigation();
   const [email, setEmail] = useState("");
   const onPress = () => {
-    if (email) {
+    if (isValidEmail(email)) {
       navigation.navigate("OneTimeCode", {
         email: email,
       });

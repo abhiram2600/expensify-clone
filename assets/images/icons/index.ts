@@ -10,6 +10,10 @@ import Receipt from "./receipt.svg";
 import Inbox from "./inbox.svg";
 import Profile from "./profile.svg";
 import ArrowRight from "./arrow-right-long.svg";
+import GoogleLogo from "./google-logo.svg";
+import AppleLogo from "./apple-logo.svg";
+import SignOutIcon from "./exit.svg";
+import SettingsIcon from "./gear.svg";
 
 export {
   ArrowGreen,
@@ -24,4 +28,8 @@ export {
   Inbox,
   Profile,
   ArrowRight,
+  GoogleLogo,
+  AppleLogo,
+  SettingsIcon,
+  SignOutIcon,
 };

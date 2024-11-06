@@ -1,6 +1,6 @@
-import GenericIcon from "@/assets/images/icons/generic-icon.svg";
 import { Temp } from "./components/Temp";
 import { settingsFunctions } from "./settings-functions";
+import { GenericIcon, SettingsIcon, SignOutIcon } from "@/assets/images/icons";
 
 export const settingsData = {
   Account: [
@@ -17,7 +17,7 @@ export const settingsData = {
       onPress: settingsFunctions.Wallet,
     },
     {
-      icon: GenericIcon,
+      icon: SettingsIcon,
       name: "Preferences",
       right: null,
       onPress: settingsFunctions.Preferences,
@@ -57,7 +57,7 @@ export const settingsData = {
       onPress: settingsFunctions.About,
     },
     {
-      icon: GenericIcon,
+      icon: SignOutIcon,
       name: "Sign out",
       right: null,
       onPress: settingsFunctions.Sign_Out,

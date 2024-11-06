@@ -87,10 +87,12 @@ const styles = StyleSheet.create({
   otpText: {
     fontSize: 15,
     textAlign: "center",
+    color: staticColors.WHITE,
   },
   goBackText: {
     fontSize: 15,
     justifyContent: "center",
+    color: staticColors.WHITE,
   },
   tAndCText: {
     fontSize: 11,

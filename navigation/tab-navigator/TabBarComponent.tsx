@@ -2,7 +2,6 @@ import React from "react";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { View, Text } from "@/components";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { useAppStore } from "@/store/AppStore";
 import { PlusButton } from "./PlusButton";
 import { constants } from "@/constants/constants";
 import { Inbox, MoneySearch } from "@/assets/images/icons";
