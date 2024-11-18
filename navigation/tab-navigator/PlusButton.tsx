@@ -3,6 +3,7 @@ import { Text, View } from "@/components";
 import { Pressable, StyleSheet } from "react-native";
 import Animated, {
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
@@ -17,12 +18,16 @@ export const PlusButton: React.FC<PlusButtonProps> = () => {
   const colors = useThemeStore((state) => state.colors);
   const deg = useSharedValue(0);
 
-  if (!isVisible && deg.value !== 0) {
-    deg.value = withSpring(0);
-  }
+  // if (!isVisible && deg.value !== 0) {
+  //   deg.value = withSpring(0);
+  // }
+
+  useDerivedValue(() => {
+    deg.value = isVisible ? withSpring(45) : withSpring(0);
+  }, [isVisible]);
 
   const onPress = () => {
-    deg.value = withSpring(deg.value + 45);
+    //deg.value = withSpring(deg.value + 45);
     changeModalState({ isVisible: true, type: modalTypeState.PLUSBUTTON });
   };
 
